@@ -1,0 +1,312 @@
+@font-face {
+  font-family: futura;
+  src: url("./font/futura\ light\ bt.ttf");
+}
+@font-face {
+  font-family: futura-m;
+  src: url("./font/futura\ medium\ bt.ttf");
+}
+@font-face {
+  font-family: futura-l;
+  src: url("./font/Futura\ XBlk\ BT.ttf");
+}
+@font-face {
+  font-family: futura-x;
+  src: url("./font/futura\ medium\ condensed\ bt.ttf");
+}
+@font-face {
+  font-family: futura-t;
+  src: url("./font/Futura\ Bold\ font.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.App {
+  text-align: center;
+  position: relative;
+  background-color: #f3f1f5;
+}
+
+@media screen and (max-width: 1024px) {
+  .title {
+    font-size: 0.5em;
+  }
+}
+@media screen and (max-width: 640px) {
+  .title {
+    font-size: 0.5em;
+  }
+}
+@media screen and (max-width: 375px) {
+  .title {
+    font-size: 0.3em;
+  }
+}
+.logo {
+  height: 100%;
+  width: 10%;
+}
+.dress_description {
+  padding: 10px;
+  height: 10px;
+  font-size: 1.4em;
+  font-family: futura;
+  transition: opacity 0.2s, visibility 0.2s;
+  height: 100%;
+  width: 100%;
+  font-family: futura;
+  padding: 0.51%;
+}
+.dress {
+  /* width: 100%; */
+  height: 30rem;
+}
+.dress:hover {
+  opacity: 0.8;
+}
+.dress-pic {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.dresses {
+  height: 100vh;
+  margin: 1%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 60px;
+  background-color: #f3f1f5;
+  /* width: 90%; */
+  margin: auto;
+  padding: 1%;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  font-family: futura-m;
+  font-size: 4.4em;
+  color: #f3f1f5;
+}
+.title:hover {
+  display: flex;
+  flex-direction: row;
+  font-family: futura-m;
+  font-size: 4.3em;
+  color: #f0d9ff;
+}
+
+.header {
+  height: 7vh;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1%;
+  /* vertical-align: center; */
+}
+
+.header a {
+  color: #fff;
+  padding: 6%;
+  font-family: futura;
+  font-size: 2em;
+  text-decoration: none;
+  margin: 5%;
+}
+
+.header a:hover {
+  color: #f0d9ff;
+  opacity: 0.9;
+  /* padding: 1%;
+  font-family: futura;
+  font-size: 2em;
+  text-decoration: none; */
+}
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.login {
+  margin: 3%;
+}
+.btn {
+  border: none;
+  width: 12.5rem;
+  height: 3.125rem;
+  font-family: futura;
+  font-size: 1.3rem;
+  /* padding: 2%; */
+}
+.stn {
+  border: none;
+  width: 10.5rem;
+  height: 2rem;
+  font-family: futura;
+  font-size: 1.3rem;
+  /* padding: 2%; */
+}
+
+.itn {
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  font-family: futura;
+  font-size: 1.3rem;
+  margin: 2%;
+  width: 150%;
+}
+.like {
+  position: absolute;
+  left: 10px;
+  right: 0;
+  top: 10px;
+  bottom: 0;
+  color: #f3f1f5;
+  height: 12%;
+  width: 15%;
+  font-size: 3em;
+  margin: 1%;
+}
+.liked {
+  position: absolute;
+  left: 1.875rem;
+  right: 0;
+  top: 1rem;
+  bottom: 0;
+  text-shadow: #7f7c82;
+  color: #f3f1f5;
+  /* height: 12%; */
+  font-size: 2em;
+}
+.like:hover {
+  color: black;
+}
+.dress-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.btn:hover {
+  /* color: #bfa2db; */
+  text-shadow: 1px 1px #bfa2db;
+}
+
+.home {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://images.shift.how/BorrowClothesSpecialOccasions_becca-mchaffie_Desktop.jpg")
+      center center/cover no-repeat;
+  opacity: 0.9;
+  font-family: futura;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.login {
+  opacity: 0.8;
+}
+@media screen and (max-width: 1024px) {
+  .dresses {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 640px) {
+  .dresses {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 375px) {
+  .dresses {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.dress-item {
+  font-family: futura;
+  position: relative;
+  margin: 2%;
+  height: 100%;
+}
+.dress-item img {
+  height: 100%;
+}
+.update-Element {
+  position: absolute;
+  /* top: 200%; */
+  /* right: 40%; */
+  margin: auto;
+  width: 200%;
+}
+
+.add-element {
+  display: flex;
+  flex-direction: row;
+  margin: 2%;
+}
+.dresses-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 60px;
+}
+
+.my-items {
+  background-color: #f3f1f5;
+  height: 100vh;
+}
+
+.dress-page {
+  display: flex;
+  flex-direction: column;
+  /* margin: 4%; */
+  background-color: #f3f1f5;
+  width: 100vw;
+  height: 90vh;
+}
+
+.dress-details-page p {
+  font-family: futura;
+  padding: 2%;
+  margin: 2%;
+  width: 50%;
+  font-size: 1.6em;
+}
+
+.dress-pic-page img {
+  height: 100%;
+  margin: 4%;
+  padding: 2.5%;
+}
+
+.dress-details-page {
+  /* margin: 2%; */
+  width: 30%;
+  padding: 1% 5%;
+  text-align: left;
+}
+.react-calendar__month-view__weekdays {
+  color: gray;
+}
+.react-calendar__navigation button {
+  font-size: 1em;
+}
+
+.wishlist {
+  width: 100vw;
+  height: 90vh;
+  /* grid-template-columns: ; */
+  background-color: #f3f1f5;
+}
