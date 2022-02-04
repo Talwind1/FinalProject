@@ -30,27 +30,11 @@ const getUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  //   const user = User.find({ id: req.params._id });
-  //   const updates = Object.keys(req.body);
-  //   const allowedUpdates = ["name", "email", "phone"];
-  //   const isValidOperation = updates.every((update) =>
-  //     allowedUpdates.includes(update)
-  //   );
-  //   if (!isValidOperation) {
-  //     res.status(400).send({ error: "Invalid updates" });
-  //   }
-  //   try {
-  //     updates.forEach((update) => (req.user[update] = req.body[update]));
-  //     await req.user.save();
-  //     res.send(req.user);
-  //   } catch (e) {
-  //     res.status(400).send(e.message);
-  //   }
+  //not needed now.
 };
 
 const deleteUser = async (req, res) => {
-  // const user = req.params.id;
-  // await User.remove
+  // defined later.
 };
 
 module.exports = { addUser, updateUser, getAllUsers, getUser, deleteUser };
