@@ -1,3 +1,4 @@
+const res = require("express/lib/response");
 const Dress = require("../model/dressModel");
 
 const getAllDresses = async (req, res) => {
@@ -12,16 +13,29 @@ const getAllDresses = async (req, res) => {
   }
 };
 
-const getMyDresses = async () => {
-  n;
-  //authenticateeeeeee
-  const myDresses = await Dress.find({ id });
-  return myDresses;
+const getMyDresses = async (req, res) => {
+  const id = req.body.params.id;
+  try {
+    const dresses = Dress.find({ id: id });
+    res.status(200).send(dresses);
+  } catch (e) {
+    res.status(400).send({ error: e.message });
+  }
 };
 
 const getDressesFiltered = async () => {
   //each filter and multiple filterss
   const myDresses = await Dress.find({ price });
+};
+
+const addDress = async (req, res) => {
+  const dress = new Dress(req.body);
+  try {
+    await dress.save();
+    res.status(201).send({ dress });
+  } catch (e) {
+    res.status(400).send({ error: e.message });
+  }
 };
 
 const deleteDress = async () => {
@@ -30,9 +44,6 @@ const deleteDress = async () => {
 };
 const updateDress = async () => {
   const myDresses = await Dress.findOneAndUpdate({ req }); //selected dress
-};
-const addDress = async (req, res) => {
-  const dress = new Dress(req.body);
 };
 
 module.exports = {

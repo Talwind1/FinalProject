@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
-import dressesApi from "../api";
+import dressesApi from "../../api";
 import ReactWhatsapp from "react-whatsapp";
-import whatup from "../img/whatsup.png";
+import whatup from "../../img/whatsup.png";
 const Dress = () => {
   const history = useHistory();
   const { id } = useParams();

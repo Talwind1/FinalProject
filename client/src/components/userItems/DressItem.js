@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Update from "./Update.js";
+import Update from "../addDress/Update";
 
 function DressItem({
   size,

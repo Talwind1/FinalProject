@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import dressesApi from "../api.js";
-import DressItem from "./DressItem.js";
-
-import Add from "./Add.js";
+import dressesApi from "../../api/api";
+import DressItem from "./DressItem";
+import Add from "../addDress/Add";
 
 function MyItems({ items, outerFetch }) {
-  const userId = 307840413;
+  const userId = window.localStorage.getItem("userToken");
 
   const [myItems, setMyItems] = useState(items);
   const [show, setShow] = useState(false);
@@ -39,7 +38,7 @@ function MyItems({ items, outerFetch }) {
         userId: userId,
       };
       const { data } = await dressesApi.post("dresses", newDress);
-      const items = [...myItems, data];
+      const items = [...myItems, newDress];
       setMyItems(items);
       console.log(myItems);
     } catch {}

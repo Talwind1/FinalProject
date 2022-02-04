@@ -1,7 +1,7 @@
 // import react from "react";
 import { GoogleLogin } from "react-google-login";
 import { refreshTokenSetup } from "./Utils.js";
-
+// import dressesApi from "../../api.js";
 function Login() {
   const clientId =
     "514442198747-km71bl7977f80el5gsih4mq7fu2kk6sq.apps.googleusercontent.com";
@@ -11,8 +11,9 @@ function Login() {
     console.log(res.googleId); //?
     console.log(res.profileObj);
     console.log(clientId);
+    window.localStorage.setItem("userToken", res.googleId);
     refreshTokenSetup(res);
-
+    console.log(window.localStorage);
     //send the ID token to our own API:
     // store returned user somehow
   };

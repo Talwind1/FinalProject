@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import dressesApi from "../api.js";
-import Filter from "./Filter.js";
-import Sidebar from "./Sidebar.js";
+import dressesApi from "../../api.js";
+import Filter from "../filters/Filter";
+import Sidebar from "../filters/Sidebar";
 
 function Dresses({ addToWishlist, outerFetch }) {
   const [conditions, setConditions] = useState({
@@ -17,7 +17,7 @@ function Dresses({ addToWishlist, outerFetch }) {
     setLoading(true);
     const fetching = async () => {
       try {
-        const { data } = await dressesApi.get("dresses");
+        const { data } = await dressesApi.get("/dresses");
         // console.log(googleAuth.userId);
         setLoading(false);
         setDresses(data);

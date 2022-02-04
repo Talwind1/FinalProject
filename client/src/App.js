@@ -1,24 +1,18 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Dresses from "./components/Dresses";
-import Header from "./components/Header";
-import MyItems from "./components/MyItems";
-import Home from "./components/Home";
-import Wishlist from "./components/Wishlist";
+import Dresses from "../src/components/dresses/Dresses";
+import Header from "../src/components/navbar/Header";
+import MyItems from "../src/components/userItems/MyItems";
+import Home from "../src/components/home/Home";
+import Wishlist from "../src/components/wishlist/Wishlist";
 import { useState, useEffect, useCallback } from "react";
-import dressesApi from "./api";
-import Dress from "./components/Dress";
-import { currentUser } from "react-google-login";
+import dressesApi from "../src/api/api";
+import Dress from "../src/components/dresses/Dress";
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [dresses, setDresses] = useState(null);
   const [wishlist, setWishlist] = useState([]);
-  const [userLoggedIn, setUserLoggedIn] = useState();
-
-  // export const ThemeContext=React.createContext(){//provider/value
-
-  // }
 
   useEffect(() => {
     //get dresses data
@@ -63,16 +57,11 @@ function App() {
     }
   };
 
-  const whoIsIn = (user) => {
-    console.log(currentUser);
-    setUserLoggedIn(user);
-  };
-
   return (
     <div className="App">
       {loading && <h3>Loading...</h3>}
       <Router>
-        <Header whoIsIn={(user) => this.whoIsIn} />
+        <Header />
         <Switch>
           <>
             <Route exact path="/">
@@ -87,11 +76,7 @@ function App() {
               )}
             </Route>
             <Route path="/my-items">
-              <MyItems
-                items={dresses}
-                outerFetch={outerFetch}
-                userId={userLoggedIn}
-              />
+              <MyItems items={dresses} outerFetch={outerFetch} />
             </Route>
             <Route path="/dress/:id" exact component={Dress} />
             <Route path="/wishlist">

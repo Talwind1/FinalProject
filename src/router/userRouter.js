@@ -2,15 +2,18 @@ const express = require("express");
 const req = require("express/lib/request");
 const router = express.Router();
 const User = require("../model/userModel");
+const {
+  addUser,
+  updateUser,
+  getAllUsers,
+  getUser,
+  deleteUser,
+} = require("../controllers/user.controllers");
 
-router.post("/users", async (req, res) => {
-  try {
-    const user = new User(req.body);
-    await user.save();
-    res.status(201).send({ user });
-  } catch (e) {
-    res.status(400).send(e.message);
-  }
-});
+router.post("/users", addUser);
+router.get("/users", getAllUsers);
+router.get("/users/:id", getUser);
+router.delete("/users/:id", deleteUser);
+router.patch("/users/:id", updateUser);
 
 module.exports = router;

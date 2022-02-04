@@ -21,13 +21,7 @@ dressRouter.get("/dresses", getAllDresses);
 //   }
 // }); //myDresses
 
-// dressRouter.post("/dresses", (req, res) => {
-//   try {
-//     res.status(200).send(addDress());
-//   } catch (e) {
-//     res.status(400).send(e.message);
-//   }
-// });
+dressRouter.post("/dresses", addDress);
 // dressRouter.delete("/dresses/:id", (req, res) => {
 //   try {
 //     res.status(200).send(deleteDress());

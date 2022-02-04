@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { GiLargeDress } from "react-icons/gi";
 import { AiOutlineFileAdd } from "react-icons/ai";
 import { BsHeart } from "react-icons/bs";
-import Login from "./Login";
-import Logout from "./Logout";
+import Login from "../google login/Login";
+import Logout from "../google login/Logout";
 
 function Header({ whoIsIn }) {
   return (
