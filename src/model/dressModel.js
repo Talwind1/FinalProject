@@ -17,10 +17,7 @@ const validator = require("validator");
 //     type: Number,
 //     required: true,
 //     default: 0,
-//     validate(value) {
-//       if (!Number.isInteger(value)) {
-//         throw new Error("Price must be a positive number");
-//       }
+
 //     },
 //   },
 //   location: {
@@ -33,15 +30,28 @@ const validator = require("validator");
 const dressSchema = mongoose.Schema({
   location: {
     type: String,
+    required: true,
   },
   price: {
     type: Number,
+    required: true,
+    // validate(value) {
+    //   if (!Number.isInteger(value)) {
+    //     throw new Error("Price must be a positive number");
+    //   }
+    // },
   },
   color: {
     type: String,
+    required: true,
   },
   size: {
     type: String,
+    required: true,
+  },
+  url: {
+    type: String,
+    required: true,
   },
 });
 

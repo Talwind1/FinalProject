@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import dressesApi from "../../api.js";
+import dressesApi from "../../api/api";
 import Filter from "../filters/Filter";
 import Sidebar from "../filters/Sidebar";
 
@@ -17,13 +17,13 @@ function Dresses({ addToWishlist, outerFetch }) {
     setLoading(true);
     const fetching = async () => {
       try {
-        const { data } = await dressesApi.get("/dresses");
-        // console.log(googleAuth.userId);
+        const { data } = await dressesApi.get("/dresses"); //api call get dresses
+        console.log(data);
         setLoading(false);
         setDresses(data);
-        outerFetch();
+        //  outerFetch();
       } catch (e) {
-        throw new e.messege();
+        throw new e.messege("why dont work");
       }
     };
     fetching();

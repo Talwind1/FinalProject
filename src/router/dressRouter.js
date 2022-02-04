@@ -13,15 +13,12 @@ const multer = require("multer");
 
 dressRouter.get("/dresses", getAllDresses);
 
-// dressRouter.get("/dresses/me", (req, res) => {
-//   try {
-//     res.status(200).send(getMyDresses());
-//   } catch (e) {
-//     res.status(400).send(e.message);
-//   }
-// }); //myDresses
+dressRouter.get("/dresses/me", getMyDresses);
 
 dressRouter.post("/dresses", addDress);
+
+dressRouter.patch("/dresses/:id", updateDress);
+dressRouter.delete("/dresses/:id", deleteDress);
 // dressRouter.delete("/dresses/:id", (req, res) => {
 //   try {
 //     res.status(200).send(deleteDress());

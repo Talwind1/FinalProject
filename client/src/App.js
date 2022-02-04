@@ -14,48 +14,48 @@ function App() {
   const [dresses, setDresses] = useState(null);
   const [wishlist, setWishlist] = useState([]);
 
-  useEffect(() => {
-    //get dresses data
-    setLoading(true);
-    const fetching = async () => {
-      try {
-        const { data } = await dressesApi.get("dresses");
-        setLoading(false);
-        setDresses(data);
-      } catch (e) {
-        throw e.messege;
-      }
-    };
-    fetching();
-  }, []);
-  const outerFetch = useCallback(async () => {
-    //function for rendering the props
-    console.log("its happen!");
-    try {
-      const { data } = await dressesApi.get("dresses");
-      setLoading(false);
+  // useEffect(() => {
+  //   //get dresses data
+  //   setLoading(true);
+  //   const fetching = async () => {
+  //     try {
+  //       const { data } = await dressesApi.get("dresses");
+  //       setLoading(false);
+  //       setDresses(data);
+  //     } catch (e) {
+  //       throw e.messege;
+  //     }
+  //   };
+  //   fetching();
+  // }, []);
+  // const outerFetch = useCallback(async () => {
+  //   //function for rendering the props
+  //   console.log("its happen!");
+  //   try {
+  //     const { data } = await dressesApi.get("dresses");
+  //     setLoading(false);
 
-      setDresses(data);
-    } catch (e) {
-      throw e.messege;
-    }
-  }, []);
+  //     setDresses(data);
+  //   } catch (e) {
+  //     throw e.messege;
+  //   }
+  // }, []);
 
-  const addToWishlist = async (dress) => {
-    setLoading(true);
-    try {
-      if (!wishlist.find((el) => el.id === dress.id)) {
-        const { data } = await dressesApi.post("/wishlist", dress);
-        setLoading(false);
-        let copy = [...wishlist];
-        copy.push(data);
-        console.log(copy);
-        setWishlist(copy);
-      }
-    } catch (e) {
-      throw console.error(e.messege);
-    }
-  };
+  // const addToWishlist = async (dress) => {
+  //   setLoading(true);
+  //   try {
+  //     if (!wishlist.find((el) => el.id === dress.id)) {
+  //       const { data } = await dressesApi.post("/wishlist", dress);
+  //       setLoading(false);
+  //       let copy = [...wishlist];
+  //       copy.push(data);
+  //       console.log(copy);
+  //       setWishlist(copy);
+  //     }
+  //   } catch (e) {
+  //     throw console.error(e.messege);
+  //   }
+  // };
 
   return (
     <div className="App">
@@ -68,19 +68,23 @@ function App() {
               <Home />
             </Route>
             <Route path="/dresses">
-              {dresses && (
-                <Dresses
-                  addToWishlist={addToWishlist}
-                  outerFetch={outerFetch}
-                />
-              )}
+              {/* {dresses && ( */}
+              <Dresses
+              //    addToWishlist={addToWishlist}
+              //  outerFetch={outerFetch}
+              />
+              {/* )} */}
             </Route>
             <Route path="/my-items">
-              <MyItems items={dresses} outerFetch={outerFetch} />
+              <MyItems
+              //items={dresses} outerFetch={outerFetch}
+              />
             </Route>
             <Route path="/dress/:id" exact component={Dress} />
             <Route path="/wishlist">
-              <Wishlist wishlist={wishlist} />
+              <Wishlist
+              //   wishlist={wishlist}
+              />
             </Route>
           </>
         </Switch>

@@ -4,6 +4,7 @@ const Dress = require("../model/dressModel");
 const getAllDresses = async (req, res) => {
   try {
     const dresses = await Dress.find({});
+
     if (!dresses) {
       res.status(400).send("no dresses found");
     }
@@ -38,12 +39,33 @@ const addDress = async (req, res) => {
   }
 };
 
-const deleteDress = async () => {
-  const myDresses = await Dress.findOneAndDelete({ req }); //selected dress
-  //return the found?
+const deleteDress = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const dress = await Dress.findByIdAndDelete(id);
+    if (!dress) {
+      return res.status(400).send({ error: "Cannot find dress" });
+    }
+    res.send(dress);
+  } catch (e) {
+    res.status(400).send(e.message);
+  }
 };
-const updateDress = async () => {
-  const myDresses = await Dress.findOneAndUpdate({ req }); //selected dress
+
+const updateDress = async (req, res) => {
+  await Dress.findOneAndUpdate(
+    { _id: req.params.id },
+    {
+      $set: {
+        size: req.body.size,
+        location: req.body.location,
+        url: req.body.url,
+        color: req.body.url,
+        price: req.body.price,
+      },
+    }
+  );
+  res.send("done");
 };
 
 module.exports = {
