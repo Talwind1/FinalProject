@@ -11,14 +11,13 @@ function Sidebar({ setCons }) {
     const newValues = { ...vals };
     newValues[type] = value;
     setVals(newValues);
-    console.log(vals);
   };
 
   return (
     <div className="Sidebar">
       <Select
         type="size"
-        options={["xs", "s", "m", "l", "xl"]}
+        options={["XXS", "XS", "S", "M", "L", "XL", "XXL"]}
         handleSelect={handleSelect}
       />
       <Select

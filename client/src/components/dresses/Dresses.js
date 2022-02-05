@@ -14,24 +14,33 @@ function Dresses({ addToWishlist, outerFetch }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    //first time -all the dresses apear.
     setLoading(true);
     const fetching = async () => {
       try {
         const { data } = await dressesApi.get("/dresses"); //api call get dresses
-        console.log(data);
         setLoading(false);
         setDresses(data);
-        //  outerFetch();
       } catch (e) {
-        throw new e.messege("why dont work");
+        throw new e.messege();
       }
     };
     fetching();
-  }, [outerFetch]);
+  }, []);
 
-  const newCons = (vals) => {
+  const filterDresses = (vals) => {
+    //we want  to filter the dresses by cons.
+    const { data } = await dressesApi.get(
+      "/dresses?size=conditions.size&color=conditions.color&location=conditions.location&price<conditions.price"
+    ); //api call get dresses
+    const dresses = Dress.find({
+      size: conditions.size,
+      location: conditions.location,
+      color: conditions.color,
+      price: conditions.price,
+    });
+    setDresses(dresses);
     setConditions(vals);
-    console.log("conditions is", vals);
   };
 
   //creacte state of conditions to filter props
@@ -48,7 +57,7 @@ function Dresses({ addToWishlist, outerFetch }) {
 
   return (
     <div>
-      <Sidebar setCons={newCons} />
+      <Sidebar setCons={filterDresses} />
 
       {dresses && display()}
       {loading && <h2>Loading...</h2>}

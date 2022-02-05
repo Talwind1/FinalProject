@@ -24,11 +24,6 @@ const getMyDresses = async (req, res) => {
   }
 };
 
-const getDressesFiltered = async () => {
-  //each filter and multiple filterss
-  const myDresses = await Dress.find({ price });
-};
-
 const addDress = async (req, res) => {
   const dress = new Dress(req.body);
   try {
@@ -68,6 +63,11 @@ const updateDress = async (req, res) => {
   res.send("done");
 };
 
+const getDressesFiltered = (req, res) => {
+  const { size, color, location, price } = req.query;
+  const filteredDress = Dress.find({ size, color, location, price });
+  res.send(filteredDress);
+};
 module.exports = {
   getAllDresses,
   getMyDresses,

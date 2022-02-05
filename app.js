@@ -11,8 +11,8 @@ app.use(cors());
 app.use(cors(CorsConfig));
 app.use(express.urlencoded({ extended: false })); //alex
 app.use(express.json());
-app.use("/", dressRouter);
-app.use(userRouter);
+app.use("/api", dressRouter);
+app.use("/api", userRouter);
 
 mongoose.connect(MONGOOSE_URI, (error, mongo) => {
   if (error) return console.log(error);

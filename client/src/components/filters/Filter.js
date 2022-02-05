@@ -3,33 +3,33 @@ import { Link } from "react-router-dom";
 import { BiHeartCircle } from "react-icons/bi";
 
 function Filter({ dresses, conditions, addToWishlist }) {
-  const filterData = (arr) => {
-    let filtered = [...arr];
-    if (conditions.location) {
-      filtered = filtered.filter(
-        (dress) =>
-          conditions.location.toLowerCase() === dress.location.toLowerCase()
-      );
-    }
-    if (conditions.color) {
-      filtered = filtered.filter(
-        (dress) => conditions.color.toLowerCase() === dress.color.toLowerCase()
-      );
-    }
-    if (conditions.size) {
-      filtered = filtered.filter(
-        (dress) => conditions.size.toLowerCase() === dress.size.toLowerCase()
-      );
-    }
+  // const filterData = (arr) => {
+  //   let filtered = [...arr];
+  //   if (conditions.location) {
+  //     filtered = filtered.filter(
+  //       (dress) =>
+  //         conditions.location.toLowerCase() === dress.location.toLowerCase()
+  //     );
+  //   }
+  //   if (conditions.color) {
+  //     filtered = filtered.filter(
+  //       (dress) => conditions.color.toLowerCase() === dress.color.toLowerCase()
+  //     );
+  //   }
+  //   if (conditions.size) {
+  //     filtered = filtered.filter(
+  //       (dress) => conditions.size.toLowerCase() === dress.size.toLowerCase()
+  //     );
+  //   }
 
-    return filtered;
-  };
+  //   return filtered;
+  // };
 
   const mapData = () => {
-    return filterData(dresses).map((dress) => {
+    return dresses.map((dress) => {
       return (
         <div
-          key={dress.id}
+          key={dress._id}
           className="dress"
           style={{
             position: "relative",
@@ -43,7 +43,7 @@ function Filter({ dresses, conditions, addToWishlist }) {
           >
             <BiHeartCircle style={{ backgroundColor: "transperant" }} />
           </div>
-          <img src={dress.image} alt="dress pic" className="dress-pic" />
+          <img src={dress.url} alt="dress pic" className="dress-pic" />
           <Link
             to={{ pathname: `/dress/${dress.id}` }}
             style={{ textDecoration: "none" }}
