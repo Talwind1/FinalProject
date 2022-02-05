@@ -17,9 +17,7 @@ function Select({ type, options, handleSelect }) {
         onChange={(e) => handleSelect(e.target.value, type)}
         className="stn"
       >
-        <option value="all" disabled selected>
-          {type}
-        </option>
+        <option defaultValue>{type}</option>
         <option value={null}></option>
         {createOptions()}
       </select>

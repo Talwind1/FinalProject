@@ -1,23 +1,23 @@
 import { useState } from "react";
 import Select from "./Select";
-function Sidebar({ setCons }) {
-  const [vals, setVals] = useState({
+function Sidebar({ setConditions }) {
+  const [values, setValues] = useState({
     location: "",
     color: "",
     size: "",
     price: "",
   });
   const handleSelect = (value, type) => {
-    const newValues = { ...vals };
+    const newValues = { ...values };
     newValues[type] = value;
-    setVals(newValues);
+    setValues(newValues);
   };
 
   return (
     <div className="Sidebar">
       <Select
         type="size"
-        options={["XXS", "XS", "S", "M", "L", "XL", "XXL"]}
+        options={["XXS", "XS", "s", "M", "L", "XL", "XXL"]}
         handleSelect={handleSelect}
       />
       <Select
@@ -43,7 +43,7 @@ function Sidebar({ setCons }) {
       />
       <button
         onClick={() => {
-          setCons(vals);
+          setConditions(values);
         }}
         className="btn"
       >

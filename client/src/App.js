@@ -14,49 +14,6 @@ function App() {
   const [dresses, setDresses] = useState(null);
   const [wishlist, setWishlist] = useState([]);
 
-  // useEffect(() => {
-  //   //get dresses data
-  //   setLoading(true);
-  //   const fetching = async () => {
-  //     try {
-  //       const { data } = await dressesApi.get("dresses");
-  //       setLoading(false);
-  //       setDresses(data);
-  //     } catch (e) {
-  //       throw e.messege;
-  //     }
-  //   };
-  //   fetching();
-  // }, []);
-  // const outerFetch = useCallback(async () => {
-  //   //function for rendering the props
-  //   console.log("its happen!");
-  //   try {
-  //     const { data } = await dressesApi.get("dresses");
-  //     setLoading(false);
-
-  //     setDresses(data);
-  //   } catch (e) {
-  //     throw e.messege;
-  //   }
-  // }, []);
-
-  // const addToWishlist = async (dress) => {
-  //   setLoading(true);
-  //   try {
-  //     if (!wishlist.find((el) => el.id === dress.id)) {
-  //       const { data } = await dressesApi.post("/wishlist", dress);
-  //       setLoading(false);
-  //       let copy = [...wishlist];
-  //       copy.push(data);
-  //       console.log(copy);
-  //       setWishlist(copy);
-  //     }
-  //   } catch (e) {
-  //     throw console.error(e.messege);
-  //   }
-  // };
-
   return (
     <div className="App">
       {loading && <h3>Loading...</h3>}

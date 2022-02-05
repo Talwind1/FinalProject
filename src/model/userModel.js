@@ -12,11 +12,13 @@ const userSchema = new mongoose.Schema({
     // unique: true,
     // //  validate - isEmail
   },
-  _id: {
+  id: {
     type: String,
-    // required: true,
-    // unique: true,
+    required: true,
+    unique: true,
   },
+  myItems: { type: Array, default: [] },
+  wishlist: { type: Array, default: [] },
 });
 
 const User = mongoose.model("User", userSchema);

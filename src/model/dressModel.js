@@ -22,6 +22,9 @@ const dressSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  owner: {
+    type: String,
+  },
 });
 
 const Dress = mongoose.model("Dress", dressSchema);

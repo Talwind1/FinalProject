@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
-import dressesApi from "../../api";
+import dressesApi from "../../api/api";
 import ReactWhatsapp from "react-whatsapp";
 import whatup from "../../img/whatsup.png";
 const Dress = () => {

@@ -3,21 +3,25 @@ import dressesApi from "../../api/api";
 import DressItem from "./DressItem";
 import Add from "../addDress/Add";
 
-function MyItems({ items, outerFetch }) {
-  const userId = window.localStorage.getItem("userToken");
+// import User from "../../../../src/model/userModel";
 
-  const [myItems, setMyItems] = useState(items);
+function MyItems() {
+  const [userId, setUserId] = useState("");
+  const [user, setUser] = useState(null);
+  const [myItems, setMyItems] = useState(null);
   const [show, setShow] = useState(false);
   const [showAdd, setAddShow] = useState(false);
 
   useEffect(() => {
-    if (items) {
-      const arr = items.filter((dress) => {
-        return dress.userId === userId;
-      });
-      console.log(arr);
-      setMyItems(arr);
+    async function setting() {
+      let userToken = window.localStorage.getItem("userToken");
+      setUserId(userToken);
+      let userLogged = await dressesApi.post("/users/byid", userId);
+      setUser(userLogged);
+      setMyItems(user.myItems);
+      console.log(userToken);
     }
+    setting();
   }, []);
 
   const addComp = () => {
@@ -35,22 +39,21 @@ function MyItems({ items, outerFetch }) {
         price: item.price,
         color: item.color,
         image: item.image,
-        userId: userId,
+        owner: userId,
       };
       const { data } = await dressesApi.post("dresses", newDress);
+      await dressesApi.put(`/users/itemadd/${id}`, newDress);
       const items = [...myItems, newDress];
       setMyItems(items);
       console.log(myItems);
-    } catch {}
+    } catch (e) {
+      throw Error(e.message);
+    }
   };
 
   const updateFunc = async (id, newItem) => {
-    console.log(id);
-    console.log(newItem);
     try {
-      const res = await dressesApi.put(`/dresses/${id}`, newItem);
-      console.log(res);
-      outerFetch();
+      await dressesApi.patch(`/dresses/${id}`, newItem);
     } catch (e) {}
     console.log(newItem);
   };
@@ -58,11 +61,8 @@ function MyItems({ items, outerFetch }) {
   const deleteDress = async (id) => {
     try {
       await dressesApi.delete(`dresses/${id}`);
-      let items = myItems.filter((item) => {
-        return item.id !== id;
-      });
-      setMyItems(items);
-      outerFetch();
+      const dress = await dressesApi.get(`/dresses/${id}`);
+      await dressesApi.put(`/users/itemDel/:${userId}`, dress);
     } catch (e) {}
   };
 

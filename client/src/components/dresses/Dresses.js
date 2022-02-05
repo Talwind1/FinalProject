@@ -28,14 +28,18 @@ function Dresses({ addToWishlist, outerFetch }) {
     fetching();
   }, []);
 
-  const filterDresses = (vals) => {
+  const filterDresses = (values) => {
+    setConditions(values);
+    console.log(values);
     //we want  to filter the dresses by cons.
-    const { data } = await dressesApi.get(
-      `/dresses?size=${conditions.size}&color=${conditions.color}&location=${conditions.location}&price<${conditions.price}`
-    ); //api call get dresses
+    // const { data } = await dressesApi.get(
+    //   `/dresses/filter?size=${conditions.size}`,
+    //   conditions
+    // ); //api call get dresses
 
-    setDresses(data);
-    setConditions(vals);
+    // setDresses(data);
+    // console.log(data);
+    display();
   };
 
   //creacte state of conditions to filter props
@@ -52,7 +56,7 @@ function Dresses({ addToWishlist, outerFetch }) {
 
   return (
     <div>
-      <Sidebar setCons={filterDresses} />
+      <Sidebar setConditions={filterDresses} />
 
       {dresses && display()}
       {loading && <h2>Loading...</h2>}

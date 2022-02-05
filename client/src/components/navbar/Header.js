@@ -5,7 +5,7 @@ import { BsHeart } from "react-icons/bs";
 import Login from "../google login/Login";
 import Logout from "../google login/Logout";
 
-function Header({ whoIsIn }) {
+function Header() {
   return (
     <div className="header">
       <div className="links">
@@ -22,8 +22,8 @@ function Header({ whoIsIn }) {
         </Link>
       </div>
       <div className="login">
-        <Login whoIsIn={whoIsIn} />
-        <Logout />
+        <Login />
+        {/* <Logout /> */}
       </div>
     </div>
   );

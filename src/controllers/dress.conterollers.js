@@ -1,8 +1,8 @@
 const res = require("express/lib/response");
 const Dress = require("../model/dressModel");
+const User = require("../model/userModel");
 
 const getAllDresses = async (req, res) => {
-  console.log("in the wrong route");
   try {
     const dresses = await Dress.find({});
 
@@ -15,11 +15,11 @@ const getAllDresses = async (req, res) => {
   }
 };
 
-const getMyDresses = async (req, res) => {
-  const id = req.body.params.id;
+const getDress = async (req, res) => {
+  const id = req.params.id;
   try {
-    const dresses = Dress.find({ id: id });
-    res.status(200).send(dresses);
+    const dress = Dress.find({ id: id });
+    res.status(200).send(dress);
   } catch (e) {
     res.status(400).send({ error: e.message });
   }
@@ -83,7 +83,7 @@ const getDressesFiltered = async (req, res) => {
 
 module.exports = {
   getAllDresses,
-  getMyDresses,
+  getDress,
   getDressesFiltered,
   deleteDress,
   updateDress,
