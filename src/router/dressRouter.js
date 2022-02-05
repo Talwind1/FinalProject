@@ -15,6 +15,6 @@ dressRouter.get("/dresses/me", getMyDresses);
 dressRouter.post("/dresses", addDress);
 dressRouter.patch("/dresses/:id", updateDress);
 dressRouter.delete("/dresses/:id", deleteDress);
-dressRouter.get("/dresses/filtered", getDressesFiltered);
+dressRouter.get("/dresses/filter", getDressesFiltered);
 
 module.exports = dressRouter;

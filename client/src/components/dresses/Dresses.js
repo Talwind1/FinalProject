@@ -31,15 +31,10 @@ function Dresses({ addToWishlist, outerFetch }) {
   const filterDresses = (vals) => {
     //we want  to filter the dresses by cons.
     const { data } = await dressesApi.get(
-      "/dresses?size=conditions.size&color=conditions.color&location=conditions.location&price<conditions.price"
+      `/dresses?size=${conditions.size}&color=${conditions.color}&location=${conditions.location}&price<${conditions.price}`
     ); //api call get dresses
-    const dresses = Dress.find({
-      size: conditions.size,
-      location: conditions.location,
-      color: conditions.color,
-      price: conditions.price,
-    });
-    setDresses(dresses);
+
+    setDresses(data);
     setConditions(vals);
   };
 
