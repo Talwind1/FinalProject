@@ -16,10 +16,12 @@ function MyItems() {
     async function setting() {
       let userToken = window.localStorage.getItem("userToken");
       setUserId(userToken);
-      let userLogged = await dressesApi.post("/users/byid", userId);
-      setUser(userLogged);
-      setMyItems(user.myItems);
+      let { data } = await dressesApi.get(`/users/${userToken}`);
       console.log(userToken);
+      setUser(data);
+      let result = await dressesApi.get(`/users/getmyitems/${userToken}`);
+      setMyItems(result.data);
+      console.log(result.data);
     }
     setting();
   }, []);
@@ -31,7 +33,7 @@ function MyItems() {
     setShow(!show);
   };
 
-  const createItem = async (id, item) => {
+  const createItem = async (item) => {
     try {
       const newDress = {
         size: item.size,
@@ -40,9 +42,10 @@ function MyItems() {
         color: item.color,
         image: item.image,
         owner: userId,
+        url: item.url,
       };
       const { data } = await dressesApi.post("dresses", newDress);
-      await dressesApi.put(`/users/itemadd/${id}`, newDress);
+      await dressesApi.put(`/users/itemadd/${userId}`, newDress);
       const items = [...myItems, newDress];
       setMyItems(items);
       console.log(myItems);
@@ -75,7 +78,7 @@ function MyItems() {
             color={dress.color}
             location={dress.location}
             price={dress.price}
-            image={dress.image}
+            url={dress.url}
             id={dress.id}
             deleteFunc={() => deleteDress(dress.id)}
             updateFunc={updateFunc}

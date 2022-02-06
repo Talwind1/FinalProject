@@ -1,7 +1,24 @@
-import { React } from "react";
-
+import { React, useEffect, useState } from "react";
+import dressesApi from "../../api/api";
 import { BsHeartFill } from "react-icons/bs";
-const Wishlist = ({ wishlist }) => {
+const Wishlist = () => {
+  const [wishlist, setWishlist] = useState([]);
+  const [userId, setUserId] = useState(null);
+  //const [wishlist, setWishlist] = useState(null);
+
+  useEffect(() => {
+    async function setting() {
+      const userLogged = localStorage.getItem("userToken");
+      setUserId(userLogged);
+      const wishlistUser = await dressesApi.get(
+        `/users/getwishlist/${userLogged}`
+      );
+      const wishListItems = await wishlistUser.data;
+      setWishlist(wishListItems);
+    }
+    setting();
+  }, []);
+
   const mapWishlist = () => {
     //displaying wishlist
     return (
@@ -27,8 +44,7 @@ const Wishlist = ({ wishlist }) => {
               />
 
               <p className="dress_description">
-                Size {dress.size.toLowerCase()}, {dress.price}&#8362;{" "}
-                {dress.location}
+                Size {dress.size}, {dress.price}&#8362; {dress.location}
               </p>
             </div>
           );
@@ -41,7 +57,7 @@ const Wishlist = ({ wishlist }) => {
       className="wishlist"
       style={{ display: "flex", flexDirection: "column" }}
     >
-      {mapWishlist()}
+      {wishlist && mapWishlist()}
     </div>
   );
 };

@@ -16,9 +16,11 @@ const getAllDresses = async (req, res) => {
 };
 
 const getDress = async (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
+
   try {
-    const dress = Dress.find({ id: id });
+    const dress = Dress.findById(id);
+    console.log(dress);
     res.status(200).send(dress);
   } catch (e) {
     res.status(400).send({ error: e.message });
@@ -27,6 +29,7 @@ const getDress = async (req, res) => {
 
 const addDress = async (req, res) => {
   const dress = new Dress(req.body);
+  console.log(req.body);
   try {
     await dress.save();
     res.status(201).send({ dress });

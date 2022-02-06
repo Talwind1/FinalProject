@@ -10,9 +10,10 @@ const Dress = () => {
   const [dress, setDress] = useState([]);
   useEffect(() => {
     const fetching = async () => {
+      console.log(id);
       try {
         const { data } = await dressesApi.get(`/dresses/${id}`);
-
+        console.log(data);
         setDress(data);
       } catch (e) {
         throw e.messege;
@@ -33,7 +34,7 @@ const Dress = () => {
       <div className="dress-row">
         <div className="dress-pic-page">
           <img
-            src={dress.image}
+            src={dress.url}
             alt="dress"
             style={{ height: "36rem", width: "29rem", objectFit: "cover" }}
           />

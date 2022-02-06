@@ -4,7 +4,7 @@ import Update from "../addDress/Update";
 function DressItem({
   size,
   price,
-  image,
+  url,
   color,
   location,
   deleteFunc,
@@ -22,7 +22,7 @@ function DressItem({
       <>
         <img
           className="dress-pic"
-          src={image}
+          src={url}
           alt="dress-pic"
           style={{ width: "100%", height: "auto" }}
         />

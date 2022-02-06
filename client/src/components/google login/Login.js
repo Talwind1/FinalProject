@@ -13,10 +13,14 @@ function Login() {
     console.log(clientId);
     await window.localStorage.setItem("userToken", res.googleId);
     //  console.log(window.localStorage);
-    console.log("hi");
-    const user = { id: res.googleId, name: res.name, email: res.email };
+    console.log(res.googleId, res.profileObj.email, res.profileObj.name);
+    const user = {
+      id: res.googleId,
+      name: res.profileObj.name,
+      email: res.profileObj.email,
+    };
     console.log(user);
-    await dressesApi.post("/users", res);
+    await dressesApi.post("/users", user);
     refreshTokenSetup(res);
   };
 

@@ -1,14 +1,16 @@
 import { useState } from "react";
 
 import Input from "./Input";
-function Add({ id, clickFunc, userId }) {
+function Add({ clickFunc, userId }) {
   const [item, setItem] = useState({
     size: "",
     image: "",
     color: "",
+    phone: "",
     location: "",
     price: "",
     usedId: userId,
+    url: "",
   });
 
   const [msg, setMsg] = useState(false);
@@ -32,8 +34,8 @@ function Add({ id, clickFunc, userId }) {
         </li>
         <li>
           <Input
-            type="image"
-            value={item.image}
+            type="phone"
+            value={item.phone}
             handleChange={(e) => handleChange(e.target)}
           />
         </li>
@@ -50,6 +52,11 @@ function Add({ id, clickFunc, userId }) {
             value={item.location}
             handleChange={(e) => handleChange(e.target)}
           />
+          <Input
+            type="url"
+            value={item.url}
+            handleChange={(e) => handleChange(e.target)}
+          />
         </li>
         <li>
           <Input
@@ -61,13 +68,14 @@ function Add({ id, clickFunc, userId }) {
       </ul>
       <button
         onClick={() => {
-          clickFunc(id, item);
+          clickFunc(item);
           setItem({
             size: "",
             image: "",
             color: "",
             location: "",
             price: "",
+            url: "",
             usedId: userId,
           });
           setMsg(true);

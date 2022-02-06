@@ -1,21 +1,18 @@
 const User = require("../model/userModel");
 
 const addUser = async (req, res) => {
-  // const foundUser = await User.find({ _id: req.body._id });
-  // console.log("the req is", req.body, req.body.id);
-  // if (!foundUser || foundUser.length < 1) {
-  console.log("req body", req.body);
+  const foundUser = User.findOne({ id: req.params.id });
+
   const user = new User({
-    // email: req.body.email,
-    // name: req.body.name,
-    id: req.body.googleId,
+    email: req.body.email,
+    name: req.body.name,
+    id: req.body.id,
   });
-  console.log(user);
   try {
     await user.save();
     return res.status(201).send(user);
   } catch (e) {
-    return res.status(400).send({ error: e.message });
+    return res.status(500).send({ error: e.message });
   }
 };
 
@@ -30,7 +27,8 @@ const getAllUsers = async (req, res) => {
 };
 const getUser = async (req, res) => {
   try {
-    const user = await User.find({ id: req.body.id });
+    const user = await User.findOne({ id: req.params.id });
+    console.log(user);
     res.status(200).send(user);
   } catch (e) {
     res.status(400).send({ error: e.message });
@@ -48,8 +46,9 @@ const deleteUser = async (req, res) => {
 const addToWishlist = async (req, res) => {
   const id = req.params.id;
   try {
-    const user = await User.find({ id: id });
-    user.wishlist.push(req.dress);
+    const user = await User.findOne({ id: id });
+    console.log("find");
+    user.wishlist.push(req.body);
     await user.save();
     res.status(201).send(user);
   } catch (e) {
@@ -68,11 +67,12 @@ const deleteFromWishlist = async (req, res) => {
   }
 };
 
-const addToItems = async (req, res) => {
+const addItems = async (req, res) => {
   const id = req.params.id;
   try {
-    const user = await User.find({ id: id });
-    user.myItems.push(req.dress);
+    const user = await User.findOne({ id: id });
+    console.log("user is ", user);
+    user.myItems.push(req.body);
     await user.save();
     res.status(201).send(user);
   } catch (e) {
@@ -91,6 +91,27 @@ const deleteFromItems = async (req, res) => {
     res.status(500).send({ error: e.message });
   }
 };
+
+const getWishlist = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const user = await User.findOne({ id: id });
+    res.status(200).send(user.wishlist);
+  } catch (e) {
+    res.status(500).send({ error: e.message });
+  }
+};
+const getMyItems = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const user = await User.find({ id: id });
+    console.log(user);
+    return res.status(200).send(user.myItems);
+  } catch (e) {
+    res.status(500).send({ error: e.message });
+  }
+};
+
 module.exports = {
   addUser,
   updateUser,
@@ -99,6 +120,8 @@ module.exports = {
   deleteUser,
   addToWishlist,
   deleteFromWishlist,
-  addToItems,
+  addItems,
   deleteFromItems,
+  getWishlist,
+  getMyItems,
 };

@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-
 import { BiHeartCircle } from "react-icons/bi";
+import dressesApi from "../../api/api";
 
-function Filter({ dresses, conditions, addToWishlist }) {
+function Filter({ dresses, conditions, userId }) {
   const filterData = (arr) => {
     let filtered = [...arr];
     if (conditions.location) {
       filtered = filtered.filter((dress) => {
-        console.log(dress.url);
+        // console.log(dress.url);
         return (
           conditions.location.toLowerCase() === dress.location.toLowerCase()
         );
@@ -26,9 +26,12 @@ function Filter({ dresses, conditions, addToWishlist }) {
 
     return filtered;
   };
-
+  const addToWishlist = async (dress) => {
+    await dressesApi.put(`/users/wishadd/${userId}`, dress);
+  };
   const mapData = () => {
     return filterData(dresses).map((dress) => {
+      // console.log(dress);
       return (
         <div
           key={dress._id}
@@ -45,19 +48,14 @@ function Filter({ dresses, conditions, addToWishlist }) {
           >
             <BiHeartCircle style={{ backgroundColor: "transperant" }} />
           </div>
-          <img
-            src={dress.url.toString()}
-            alt="dress pic"
-            className="dress-pic"
-          />
+          <img src={dress.url} alt="dress pic" className="dress-pic" />
           <Link
-            to={{ pathname: `/dress/${dress.id}` }}
+            to={{ pathname: `/dress/${dress._id}` }}
             style={{ textDecoration: "none" }}
-            key={dress.id}
+            key={dress._id}
           >
             <p className="dress_description">
-              Size {dress.size.toLowerCase()}, {dress.price}&#8362;{" "}
-              {dress.location}
+              Size {dress.size}, {dress.price}&#8362; {dress.location}
             </p>
           </Link>
         </div>
