@@ -4,7 +4,7 @@ import Input from "./Input";
 function Add({ clickFunc, userId }) {
   const [item, setItem] = useState({
     size: "",
-    image: "",
+    // image: "",
     color: "",
     phone: "",
     location: "",
@@ -76,6 +76,7 @@ function Add({ clickFunc, userId }) {
             location: "",
             price: "",
             url: "",
+            phone: "",
             usedId: userId,
           });
           setMsg(true);

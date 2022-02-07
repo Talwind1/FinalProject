@@ -1,17 +1,7 @@
 import { useState } from "react";
 import Update from "../addDress/Update";
 
-function DressItem({
-  size,
-  price,
-  url,
-  color,
-  location,
-  deleteFunc,
-  id,
-  dress,
-  updateFunc,
-}) {
+function DressItem({ dress, deleteFunc, updateFunc }) {
   const [show, setShow] = useState(false);
   const upComp = () => {
     setShow(!show);
@@ -22,16 +12,16 @@ function DressItem({
       <>
         <img
           className="dress-pic"
-          src={url}
+          src={dress.url}
           alt="dress-pic"
           style={{ width: "100%", height: "auto" }}
         />
-        <h4>Size: {size}</h4>
-        <h4>Color: {color}</h4>
-        <h4>Price: {price}</h4>
-        <h4>Location:{location}</h4>
+        <h4>Size: {dress.size}</h4>
+        <h4>Color: {dress.color}</h4>
+        <h4>Price: {dress.price}</h4>
+        <h4>Location:{dress.location}</h4>
       </>
-      <button onClick={deleteFunc} className="btn">
+      <button onClick={() => deleteFunc(dress)} className="btn">
         Delete
       </button>
       <button onClick={upComp} className="btn">
@@ -40,7 +30,7 @@ function DressItem({
 
       {show && (
         <Update
-          id={id}
+          id={dress._id}
           dress={dress}
           clickFunc={updateFunc}
           className="update-Element"

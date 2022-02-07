@@ -20,7 +20,7 @@ function Login() {
       email: res.profileObj.email,
     };
     console.log(user);
-    await dressesApi.post("/users", user);
+    const done = await dressesApi.post("/users", user);
     refreshTokenSetup(res);
   };
 

@@ -42,9 +42,10 @@ const deleteDress = async (req, res) => {
   const { id } = req.params;
   try {
     const dress = await Dress.findByIdAndDelete(id);
-    if (!dress) {
-      return res.status(400).send({ error: "Cannot find dress" });
-    }
+    console.log(dress);
+    // if (!dress) {
+    //   return res.status(400).send({ error: "Cannot find dress" });
+    // }
     res.send(dress);
   } catch (e) {
     res.status(400).send(e.message);

@@ -71,7 +71,7 @@ const addItems = async (req, res) => {
   const id = req.params.id;
   try {
     const user = await User.findOne({ id: id });
-    console.log("user is ", user);
+
     user.myItems.push(req.body);
     await user.save();
     res.status(201).send(user);
@@ -81,12 +81,18 @@ const addItems = async (req, res) => {
 };
 
 const deleteFromItems = async (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
+
   try {
-    const user = await User.find({ id: id });
-    user.myItems.filter((item) => item.id !== req.body.dress.id);
+    const user = await User.findOne({ id: id });
+    // console.log("user is", user);
+    // console.log("req is", req.body);
+    const myitems = user.myItems.filter((item) => item._id !== req.body._id);
+    // console.log(myitems);
+    user.myItems = myitems;
     await user.save();
-    res.status(200).send(user);
+    // console.log("new ", user);
+    res.status(200).send(user.myItems);
   } catch (e) {
     res.status(500).send({ error: e.message });
   }
