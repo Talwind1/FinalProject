@@ -17,6 +17,8 @@ function Dresses() {
   const [colors, setColors] = useState([]);
 
   useEffect(() => {
+    const userLogged = localStorage.getItem("userToken");
+    setUserId(userLogged);
     setLoading(true);
     const fetching = async () => {
       setLoading(true);
@@ -35,10 +37,10 @@ function Dresses() {
         });
         setLocations(cities);
         setColors(color);
-        const userLogged = localStorage.getItem("userToken");
-        setUserId(userLogged);
+      } catch (e) {
+      } finally {
         setLoading(false);
-      } catch (e) {}
+      }
     };
     fetching();
   }, []);
@@ -54,7 +56,7 @@ function Dresses() {
     return splited.join(" ");
   };
   //creacte state of conditions to filter props
-  const display = () => {
+  const display = (userId) => {
     return (
       dresses && (
         <Filter dresses={dresses} conditions={conditions} userId={userId} />
@@ -63,7 +65,7 @@ function Dresses() {
   };
 
   return loading ? (
-    <div className="loader"></div>
+    <div className="loader" />
   ) : (
     <div>
       <Sidebar
@@ -71,7 +73,7 @@ function Dresses() {
         locations={locations}
         colors={colors}
       />
-      {dresses ? display() : <h2>Loading...</h2>}
+      {dresses && display(userId)}
     </div>
   );
 }

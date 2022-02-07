@@ -12,14 +12,18 @@ function MyItems() {
   const [showAdd, setAddShow] = useState(false);
   //  const [join, setJoin] = useState(false);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     async function setting() {
       setLoading(true);
       let userToken = window.localStorage.getItem("userToken");
-      setUserId(userToken);
-      let { data } = await dressesApi.get(`/users/${userToken}`);
-      setMyItems(data.myItems);
-      setLoading(false);
+      if (userToken) {
+        setUserId(userToken);
+        let { data } = await dressesApi.get(`/users/${userToken}`);
+        setMyItems(data.myItems);
+        setLoading(false);
+      } else {
+      }
     }
     setting();
   }, []);

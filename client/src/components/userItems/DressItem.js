@@ -9,7 +9,7 @@ function DressItem({ dress, deleteFunc, updateFunc }) {
 
   return (
     <div className="dress-item" style={{ width: "25%", height: "20%" }}>
-      <>
+      <span>
         <img
           className="dress-pic"
           src={dress.url}
@@ -20,7 +20,7 @@ function DressItem({ dress, deleteFunc, updateFunc }) {
         <h4>Color: {dress.color}</h4>
         <h4>Price: {dress.price}</h4>
         <h4>Location:{dress.location}</h4>
-      </>
+      </span>
       <button onClick={() => deleteFunc(dress)} className="btn">
         Delete
       </button>

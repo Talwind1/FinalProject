@@ -47,7 +47,7 @@ const addToWishlist = async (req, res) => {
   const id = req.params.id;
   try {
     const user = await User.findOne({ id: id });
-    console.log("find");
+    // console.log("find");
     const existDress = user.wishlist.find((item) => item._id === req.body._id);
     if (!existDress) {
       user.wishlist.push(req.body);
@@ -61,8 +61,9 @@ const addToWishlist = async (req, res) => {
 const deleteFromWishlist = async (req, res) => {
   const id = req.params.id;
   try {
-    const user = await User.find({ id: id });
-    user.wishlist.filter((item) => item.id !== req.body.dress._id);
+    const user = await User.findOne({ id: id });
+
+    user.wishlist = user.wishlist.filter((item) => item._id !== req.body._id);
     await user.save();
     res.status(200).send(user);
   } catch (e) {
