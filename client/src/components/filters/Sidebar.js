@@ -17,7 +17,7 @@ function Sidebar({ setConditions }) {
     <div className="Sidebar">
       <Select
         type="size"
-        options={["XXS", "XS", "s", "M", "L", "XL", "XXL"]}
+        options={["XXS", "XS", "S", "M", "L", "XL", "XXL"]}
         handleSelect={handleSelect}
       />
       <Select

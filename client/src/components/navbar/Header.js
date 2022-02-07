@@ -4,7 +4,7 @@ import { AiOutlineFileAdd } from "react-icons/ai";
 import { BsHeart } from "react-icons/bs";
 import Login from "../google login/Login";
 import Logout from "../google login/Logout";
-
+import { GiPartyPopper } from "react-icons/gi";
 function Header() {
   return (
     <div className="header">

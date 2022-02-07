@@ -2,13 +2,15 @@ import { useState, useEffect } from "react";
 import dressesApi from "../../api/api";
 import DressItem from "./DressItem";
 import Add from "../addDress/Add";
-
+import { GiPartyPopper } from "react-icons/gi";
+import { BsHeart } from "react-icons/bs";
+import { GiLargeDress } from "react-icons/gi";
 function MyItems() {
   const [userId, setUserId] = useState("");
   const [myItems, setMyItems] = useState(null);
   const [show, setShow] = useState(false);
   const [showAdd, setAddShow] = useState(false);
-
+  const [join, setJoin] = useState(false);
   useEffect(() => {
     async function setting() {
       let userToken = window.localStorage.getItem("userToken");
@@ -71,18 +73,20 @@ function MyItems() {
   };
 
   const mapItems = () => {
-    return myItems.map((dress) => {
-      //
-      return (
-        <div className="dress-item" key={dress._id}>
-          <DressItem
-            dress={dress}
-            deleteFunc={deleteDress}
-            updateFunc={updateFunc}
-          />
-        </div>
-      );
-    });
+    if (myItems && myItems.length > 0) {
+      return myItems.map((dress) => {
+        //
+        return (
+          <div className="dress-item" key={dress._id}>
+            <DressItem
+              dress={dress}
+              deleteFunc={deleteDress}
+              updateFunc={updateFunc}
+            />
+          </div>
+        );
+      });
+    }
   };
   return (
     <div className="my-items">
@@ -99,7 +103,24 @@ function MyItems() {
         {showAdd && <Add clickFunc={createItem} userId={userId} />}
       </div>
 
-      <div className="dresses-container">{show && myItems && mapItems()}</div>
+      <div className="dresses-container">{show && mapItems()}</div>
+      <div>
+        {show && myItems.length < 1 && (
+          <span
+            style={{
+              fontFamily: "futura",
+              fontSize: "1.25em",
+              padding: "3%,10%",
+              margin: "10%",
+              border: "1px dotted purple",
+              backgroundColor: "#f0d9ff",
+            }}
+          >
+            Join the party - add your dress <BsHeart />
+            <GiLargeDress />
+          </span>
+        )}
+      </div>
     </div>
   );
 }
