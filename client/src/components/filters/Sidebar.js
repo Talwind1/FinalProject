@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "./Select";
-function Sidebar({ setConditions }) {
+function Sidebar({ setConditions, locations, colors }) {
   const [values, setValues] = useState({
     location: "",
     color: "",
     size: "",
     price: "",
   });
+
+  // useEffect(() => {
+  //   console.log(props);
+  // }, []);
+
   const handleSelect = (value, type) => {
     const newValues = { ...values };
     newValues[type] = value;
     setValues(newValues);
   };
+  // const cities = (dresses) => {
+  //   let cities = [];
+  //   dresses.forEach((dress) => {
+  //     if (!cities.includes(dress.location.toLowerCase())) {
+  //       cities.push(rewrite(dress.location));
+  //     }
+  //     return cities;
+  //   });
+  // };
 
   return (
     <div className="Sidebar">
@@ -20,27 +34,8 @@ function Sidebar({ setConditions }) {
         options={["XXS", "XS", "S", "M", "L", "XL", "XXL"]}
         handleSelect={handleSelect}
       />
-      <Select
-        type="color"
-        options={[
-          "pink",
-          "white",
-          "black",
-          "light blue",
-          "blue",
-          "orange",
-          "silver",
-          "purple",
-          "gold",
-          "green",
-        ]}
-        handleSelect={handleSelect}
-      />
-      <Select
-        type="location"
-        options={["Tel Aviv", "Haifa", "Holon", "Rishon"]}
-        handleSelect={handleSelect}
-      />
+      <Select type="color" options={colors} handleSelect={handleSelect} />
+      <Select type="location" options={locations} handleSelect={handleSelect} />
       <button
         onClick={() => {
           setConditions(values);
@@ -53,3 +48,15 @@ function Sidebar({ setConditions }) {
   );
 }
 export default Sidebar;
+//[
+//   "pink",
+//   "white",
+//   "black",
+//   "light blue",
+//   "blue",
+//   "orange",
+//   "silver",
+//   "purple",
+//   "gold",
+//   "green",
+// ]

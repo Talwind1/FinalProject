@@ -14,7 +14,6 @@ const Dress = () => {
       console.log(id);
       try {
         const { data } = await dressesApi.get(`/dresses/${id}`);
-        console.log(data);
         setDress(data);
       } catch (e) {
         throw e.messege;

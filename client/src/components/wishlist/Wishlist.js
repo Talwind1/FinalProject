@@ -4,15 +4,18 @@ import { BsHeartFill } from "react-icons/bs";
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
   const [userId, setUserId] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function setting() {
+      setLoading(true);
       const userLogged = localStorage.getItem("userToken");
       setUserId(userLogged);
 
       const { data } = await dressesApi.get(`/users/${userLogged}`);
       //  console.log(data.wishlist);
       setWishlist(data.wishlist);
+      setLoading(false);
     }
     setting();
   }, []);
@@ -32,19 +35,18 @@ const Wishlist = () => {
               key={dress._id}
               style={{ position: "relative" }}
             >
-              <div>
+              <button>
                 {" "}
                 <BsHeartFill
                   className="liked"
                   style={{ position: "absolute" }}
                 />
-              </div>
+              </button>
               <img
                 src={dress.url}
                 style={{ height: "30rem", width: "18rem", objectFit: "cover" }}
                 alt=""
               />
-
               <p
                 className="dress_description"
                 style={{ fontFamily: "futura", fontSize: "1.1em" }}
@@ -57,7 +59,9 @@ const Wishlist = () => {
       </div>
     );
   };
-  return (
+  return loading ? (
+    <div className="loader"></div>
+  ) : (
     <div
       className="wishlist"
       style={{ display: "flex", flexDirection: "column" }}

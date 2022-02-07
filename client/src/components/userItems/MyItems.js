@@ -10,13 +10,16 @@ function MyItems() {
   const [myItems, setMyItems] = useState(null);
   const [show, setShow] = useState(false);
   const [showAdd, setAddShow] = useState(false);
-  const [join, setJoin] = useState(false);
+  //  const [join, setJoin] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     async function setting() {
+      setLoading(true);
       let userToken = window.localStorage.getItem("userToken");
       setUserId(userToken);
       let { data } = await dressesApi.get(`/users/${userToken}`);
       setMyItems(data.myItems);
+      setLoading(false);
     }
     setting();
   }, []);
@@ -88,7 +91,9 @@ function MyItems() {
       });
     }
   };
-  return (
+  return loading ? (
+    <div className="loader"></div>
+  ) : (
     <div className="my-items">
       <div className="buttons">
         <button onClick={addComp} className="btn">

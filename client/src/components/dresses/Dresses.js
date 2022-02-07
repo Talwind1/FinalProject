@@ -13,15 +13,28 @@ function Dresses() {
   const [dresses, setDresses] = useState(null);
   const [loading, setLoading] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [locations, setLocations] = useState([]);
+  const [colors, setColors] = useState([]);
 
   useEffect(() => {
-    //first time -all the dresses apear.
     setLoading(true);
     const fetching = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
         const { data } = await dressesApi.get("/dresses"); //api call get dresses
         setDresses(data);
+        let cities = [];
+        let color = [];
+        data.forEach((dress) => {
+          if (!cities.includes(dress.location)) {
+            cities.push(rewrite(dress.location));
+          }
+          if (!color.includes(dress.color)) {
+            color.push(dress.color);
+          }
+        });
+        setLocations(cities);
+        setColors(color);
         const userLogged = localStorage.getItem("userToken");
         setUserId(userLogged);
         setLoading(false);
@@ -33,15 +46,31 @@ function Dresses() {
   const filterDresses = (values) => {
     setConditions(values);
   };
-
+  const rewrite = (location) => {
+    let splited = location.split(" ");
+    splited.forEach(
+      (word) => (word = word[0].toUpperCase() + word.toLowerCase().subString(1))
+    );
+    return splited.join(" ");
+  };
   //creacte state of conditions to filter props
   const display = () => {
-    return <Filter dresses={dresses} conditions={conditions} userId={userId} />;
+    return (
+      dresses && (
+        <Filter dresses={dresses} conditions={conditions} userId={userId} />
+      )
+    );
   };
 
-  return (
+  return loading ? (
+    <div className="loader"></div>
+  ) : (
     <div>
-      <Sidebar setConditions={filterDresses} />
+      <Sidebar
+        setConditions={filterDresses}
+        locations={locations}
+        colors={colors}
+      />
       {dresses ? display() : <h2>Loading...</h2>}
     </div>
   );

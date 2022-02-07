@@ -48,8 +48,11 @@ const addToWishlist = async (req, res) => {
   try {
     const user = await User.findOne({ id: id });
     console.log("find");
-    user.wishlist.push(req.body);
-    await user.save();
+    const existDress = user.wishlist.find((item) => item._id === req.body._id);
+    if (!existDress) {
+      user.wishlist.push(req.body);
+      await user.save();
+    }
     res.status(201).send(user);
   } catch (e) {
     res.status(500).send({ error: e.message });
