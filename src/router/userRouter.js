@@ -12,14 +12,12 @@ const {
   deleteFromWishlist,
   addItems,
   deleteFromItems,
-  getWishlist,
-  getMyItems,
 } = require("../controllers/user.controllers");
 
 router.post("/users", addUser);
 router.get("/users", getAllUsers);
 router.get("/users/:id", getUser);
-//router.get("/users/:id", getUser);
+
 router.delete("/users/:id", deleteUser);
 router.patch("/users/:id", updateUser);
 
@@ -29,6 +27,4 @@ router.put("/users/wishdel/:id", deleteFromWishlist);
 router.put("/users/itemadd/:id", addItems);
 router.put("/users/itemdel/:id", deleteFromItems);
 
-router.get("/users/getwishlist/:id", getWishlist);
-router.get("/users/getmyitems/:id", getMyItems);
 module.exports = router;

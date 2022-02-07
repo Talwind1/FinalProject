@@ -19,7 +19,7 @@ const getDress = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const dress = Dress.findById(id);
+    const dress = await Dress.findById(id);
     console.log(dress);
     res.status(200).send(dress);
   } catch (e) {

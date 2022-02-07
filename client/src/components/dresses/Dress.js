@@ -48,7 +48,7 @@ const Dress = () => {
             <p>{dress.price}&#8362; </p>
 
             <ReactWhatsapp
-              number={"0525482429"}
+              number={"+972" + dress.phone.substring(1)} //dress.phone
               message="Hi I'm from One Night Dress app"
               style={{ backgroundColor: "#f3f1f5" }}
             >

@@ -4,20 +4,22 @@ import { BsHeartFill } from "react-icons/bs";
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
   const [userId, setUserId] = useState(null);
-  //const [wishlist, setWishlist] = useState(null);
 
   useEffect(() => {
     async function setting() {
       const userLogged = localStorage.getItem("userToken");
       setUserId(userLogged);
-      const wishlistUser = await dressesApi.get(
-        `/users/getwishlist/${userLogged}`
-      );
-      const wishListItems = await wishlistUser.data;
-      setWishlist(wishListItems);
+
+      const { data } = await dressesApi.get(`/users/${userLogged}`);
+      //  console.log(data.wishlist);
+      setWishlist(data.wishlist);
     }
     setting();
   }, []);
+
+  const removeFromWishlist = async (dress) => {
+    const newWish = await dressesApi.put(`/users/wishdel${userId}`, dress);
+  };
 
   const mapWishlist = () => {
     //displaying wishlist
@@ -27,7 +29,7 @@ const Wishlist = () => {
           return (
             <div
               className="wish-dress"
-              key={dress.id}
+              key={dress._id}
               style={{ position: "relative" }}
             >
               <div>
@@ -38,13 +40,16 @@ const Wishlist = () => {
                 />
               </div>
               <img
-                src={dress.image}
+                src={dress.url}
                 style={{ height: "30rem", width: "18rem", objectFit: "cover" }}
                 alt=""
               />
 
-              <p className="dress_description">
-                Size {dress.size}, {dress.price}&#8362; {dress.location}
+              <p
+                className="dress_description"
+                style={{ fontFamily: "futura", fontSize: "1.1em" }}
+              >
+                Size: {dress.size} {dress.price}&#8362; {dress.location}
               </p>
             </div>
           );

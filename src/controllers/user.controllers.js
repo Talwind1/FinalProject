@@ -59,7 +59,7 @@ const deleteFromWishlist = async (req, res) => {
   const id = req.params.id;
   try {
     const user = await User.find({ id: id });
-    user.wishlist.filter((item) => item.id !== req.body.dress.id);
+    user.wishlist.filter((item) => item.id !== req.body.dress._id);
     await user.save();
     res.status(200).send(user);
   } catch (e) {
@@ -98,26 +98,6 @@ const deleteFromItems = async (req, res) => {
   }
 };
 
-const getWishlist = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const user = await User.findOne({ id: id });
-    res.status(200).send(user.wishlist);
-  } catch (e) {
-    res.status(500).send({ error: e.message });
-  }
-};
-const getMyItems = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const user = await User.find({ id: id });
-    console.log(user);
-    return res.status(200).send(user.myItems);
-  } catch (e) {
-    res.status(500).send({ error: e.message });
-  }
-};
-
 module.exports = {
   addUser,
   updateUser,
@@ -128,6 +108,4 @@ module.exports = {
   deleteFromWishlist,
   addItems,
   deleteFromItems,
-  getWishlist,
-  getMyItems,
 };
