@@ -5,27 +5,37 @@ import Add from "../addDress/Add";
 import { GiPartyPopper } from "react-icons/gi";
 import { BsHeart } from "react-icons/bs";
 import { GiLargeDress } from "react-icons/gi";
+import { useHistory } from "react-router-dom";
+
 function MyItems() {
   const [userId, setUserId] = useState("");
   const [myItems, setMyItems] = useState(null);
   const [show, setShow] = useState(false);
   const [showAdd, setAddShow] = useState(false);
-  //  const [join, setJoin] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const history = useHistory();
+
   useEffect(() => {
-    async function setting() {
-      setLoading(true);
-      let userToken = window.localStorage.getItem("userToken");
-      if (userToken) {
-        setUserId(userToken);
-        let { data } = await dressesApi.get(`/users/${userToken}`);
-        setMyItems(data.myItems);
-        setLoading(false);
-      } else {
+    let userToken = window.localStorage.getItem("userToken");
+    if (!userToken) {
+      history.push("/signin");
+    } else {
+      async function setting() {
+        try {
+          setLoading(true);
+          setUserId(userToken);
+          let { data } = await dressesApi.get(`/users/${userToken}`);
+          setMyItems(data.myItems);
+          setLoading(false);
+        } catch (e) {
+          console.log(e.message);
+        } finally {
+          setLoading(false);
+        }
       }
+      setting();
     }
-    setting();
   }, []);
 
   const addComp = () => {
@@ -52,7 +62,7 @@ function MyItems() {
       const items = [...myItems, data.dress];
       setMyItems(items);
     } catch (e) {
-      throw Error(e.message);
+      console.log(e.message);
     }
   };
 
@@ -60,7 +70,7 @@ function MyItems() {
     try {
       await dressesApi.patch(`/dresses/${id}`, newItem);
     } catch (e) {
-      throw Error(e.message);
+      console.log(e.message);
     }
   };
 
@@ -75,28 +85,29 @@ function MyItems() {
       );
       setMyItems(myNewItems);
     } catch (e) {
-      throw Error(e.message);
+      console.log(e.message);
     }
   };
 
   const mapItems = () => {
-    if (myItems && myItems.length > 0) {
-      return myItems.map((dress) => {
-        //
-        return (
-          <div className="dress-item" key={dress._id}>
-            <DressItem
-              dress={dress}
-              deleteFunc={deleteDress}
-              updateFunc={updateFunc}
-            />
-          </div>
-        );
-      });
-    }
+    // if (myItems && myItems.length > 0) {
+    return myItems.map((dress) => {
+      //
+      return (
+        <div className="dress-item" key={dress._id}>
+          <DressItem
+            dress={dress}
+            deleteFunc={deleteDress}
+            updateFunc={updateFunc}
+          />
+        </div>
+      );
+    });
+    // }
   };
+
   return loading ? (
-    <div className="loader"></div>
+    <div className="loader" />
   ) : (
     <div className="my-items">
       <div className="buttons">
@@ -113,22 +124,9 @@ function MyItems() {
       </div>
 
       <div className="dresses-container">{show && mapItems()}</div>
-      <div>
-        {show && myItems.length < 1 && (
-          <span
-            style={{
-              fontFamily: "futura",
-              fontSize: "1.25em",
-              padding: "3%,10%",
-              margin: "10%",
-              border: "1px dotted purple",
-              backgroundColor: "#f0d9ff",
-            }}
-          >
-            Join the party - add your dress <BsHeart />
-            <GiLargeDress />
-          </span>
-        )}
+      <div className="message">
+        Join the party - add your dress <BsHeart />
+        <GiLargeDress />
       </div>
     </div>
   );

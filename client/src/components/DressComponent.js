@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { BiHeartCircle } from "react-icons/bi";
 
-const DressComponent = ({ dress, wishlistAction }) => {
+import { BsHeartFill } from "react-icons/bs";
+
+const DressComponent = ({ dress, wishlistAction, isWishlist }) => {
   return (
     <div
       className="dress"
@@ -15,7 +17,11 @@ const DressComponent = ({ dress, wishlistAction }) => {
           wishlistAction(dress);
         }}
       >
-        <BiHeartCircle style={{ backgroundColor: "transperant" }} />
+        {isWishlist ? (
+          <BsHeartFill />
+        ) : (
+          <BiHeartCircle style={{ backgroundColor: "transperant" }} />
+        )}
       </div>
       <img src={dress.url} alt="dress pic" className="dress-pic" />
       <Link

@@ -272,9 +272,24 @@
   width: 100vw;
   height: 90vh;
 }
-
+.sign-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "futura";
+  margin: auto;
+}
+.sign-message h3 {
+}
+#signin {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
 .dress-details-page p {
-  font-family: futura;
+  font-family: "futura";
   padding: 2%;
   margin: 2%;
   width: 50%;
@@ -299,12 +314,34 @@
 .react-calendar__navigation button {
   font-size: 1em;
 }
-
+.hello-navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  font-family: "futura";
+  padding: 2%;
+  width: 30%;
+  width: 100%;
+}
+.hello-navbar h4 {
+  text-align: left;
+}
 .wishlist {
   width: 100vw;
   height: 90vh;
   /* grid-template-columns: ; */
   background-color: #f3f1f5;
+}
+
+.message {
+  font-family: futura;
+  font-size: 1.25em;
+  padding: 4%;
+  margin: 10%;
+  box-sizing: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-color: #f0d9ff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 .loader {
   font-size: 10px;

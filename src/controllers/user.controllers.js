@@ -4,17 +4,19 @@ const User = require("../model/userModel");
 
 const addUser = async (req, res) => {
   const foundUser = User.findOne({ id: req.params.id });
+  if (!foundUser) {
+    const user = new User({
+      email: req.body.email,
+      name: req.body.name,
+      id: req.body.id,
+    });
 
-  const user = new User({
-    email: req.body.email,
-    name: req.body.name,
-    id: req.body.id,
-  });
-  try {
-    await user.save();
-    return res.status(201).send(user);
-  } catch (e) {
-    return res.status(500).send({ error: e.message });
+    try {
+      await user.save();
+      return res.status(201).send(user);
+    } catch (e) {
+      return res.status(500).send({ error: e.message });
+    }
   }
 };
 

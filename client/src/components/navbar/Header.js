@@ -4,8 +4,30 @@ import { AiOutlineFileAdd } from "react-icons/ai";
 import { BsHeart } from "react-icons/bs";
 import Login from "../google login/Login";
 import Logout from "../google login/Logout";
+import { useEffect, useState } from "react";
 
 function Header() {
+  const [userName, setUserName] = useState(null);
+
+  useEffect(() => {
+    let name = window.localStorage.getItem("userName");
+    if (name) {
+      name = capitalize(name);
+      setUserName(name);
+    }
+  }, [userName]);
+
+  const capitalize = (location) => {
+    let splited = location.split(" ");
+    let name = "";
+    splited.forEach(
+      (word) =>
+        (name =
+          name + " " + word[0].toUpperCase() + word.toLowerCase().substring(1))
+    );
+    return name;
+  };
+
   return (
     <div className="header">
       <div className="links">
@@ -24,8 +46,18 @@ function Header() {
         className="login"
         style={{ display: "flex", flexDirection: "row", margin: "2%" }}
       >
-        <Login />
-        <Logout />
+        {userName ? (
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            {" "}
+            <div className="hello-navbar">
+              <h4>Hello </h4>
+              <h4> {userName}</h4>
+            </div>
+            <Logout name={userName} nameFunc={setUserName} />
+          </div>
+        ) : (
+          <Login name={userName} nameFunc={setUserName} />
+        )}
       </div>
     </div>
   );

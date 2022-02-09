@@ -26,7 +26,9 @@ const Wishlist = () => {
     }
     setting();
   }, []);
-
+  // useEffect(() => {
+  //   mapWishlist();
+  // }, [wishlist]);
   const removeFromWishlist = async (dress) => {
     const newWish = await dressesApi.put(`/users/wishdel/${userId}`, dress);
     fetchWishList(userId);
@@ -40,6 +42,7 @@ const Wishlist = () => {
           dress.isWishListed = true;
           return (
             <DressComponent
+              isWishlist={true}
               dress={dress}
               key={dress._id}
               wishlistAction={removeFromWishlist}

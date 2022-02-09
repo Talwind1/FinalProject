@@ -1,7 +1,6 @@
 import axios from "axios";
 
 let url;
-// url = "http://localhost:5000/api";
 if (process.env.NODE_ENV === "development") {
   console.log("im here");
   url = "http://localhost:5000/api";

@@ -32,6 +32,7 @@ function Filter({ dresses, conditions, userId }) {
     return filterData(dresses).map((dress) => {
       return (
         <DressComponent
+          isWishlist={false}
           dress={dress}
           wishlistAction={addToWishlist}
           key={dress._id}

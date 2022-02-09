@@ -26,14 +26,11 @@ function Dresses() {
       setLoading(true);
       try {
         const { data } = await dressesApi.get("/dresses"); //api call get dresses
-
         setDresses(data);
-
         data.forEach((dress) => {
           if (!cities.includes(dress.location)) {
             cities.push(capitalize(dress.location));
             console.log(!cities.includes(dress.location));
-            console.log("hi");
           }
           if (!color.includes(dress.color)) {
             color.push(capitalize(dress.color));
@@ -86,4 +83,5 @@ function Dresses() {
     </div>
   );
 }
+
 export default Dresses;
