@@ -4,7 +4,6 @@ import Login from "./google login/Login";
 import { BsHeartFill } from "react-icons/bs";
 function SignIn() {
   let history = useHistory();
-  // const [name, setName] = useState(null);
   return (
     <div id="signin">
       <div
@@ -17,8 +16,6 @@ function SignIn() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
-          // border: "1px solid black",
-          // width: "50%",
         }}
       >
         <div
@@ -27,8 +24,6 @@ function SignIn() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
-            // border: "1px solid black",
-            // width: "100%",
           }}
         >
           <div style={{ display: "flex", flexDirection: "row" }}>

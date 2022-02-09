@@ -29,9 +29,22 @@ const DressComponent = ({ dress, wishlistAction, isWishlist }) => {
         style={{ textDecoration: "none" }}
         key={dress._id}
       >
-        <p className="dress_description">
-          Size {dress.size}, {dress.price}&#8362; {dress.location}
-        </p>
+        <div className="dress_description">
+          <p style={{ fontWeight: "bold", fontSize: "18px" }}>
+            {dress.price}&#8362;{" "}
+          </p>{" "}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              fontSize: "17px",
+            }}
+          >
+            <p>
+              {dress.location}, Size: {dress.size}
+            </p>
+          </div>
+        </div>
       </Link>
     </div>
   );
