@@ -1,3 +1,5 @@
+const { Mongoose } = require("mongoose");
+const Dress = require("../model/dressModel");
 const User = require("../model/userModel");
 
 const addUser = async (req, res) => {
@@ -31,7 +33,23 @@ const getUser = async (req, res) => {
     console.log(user);
     res.status(200).send(user);
   } catch (e) {
-    res.status(400).send({ error: e.message });
+    res.status(500).send({ error: e.message });
+  }
+};
+
+const getWishList = async (req, res) => {
+  try {
+    const user = await User.findOne({ id: req.params.id });
+
+    let dresses = await Promise.all(
+      user.wishlist.map(async (dressID) => {
+        return await Dress.findById(dressID);
+      })
+    );
+    console.log(dresses);
+    return res.status(200).send(dresses);
+  } catch (e) {
+    res.status(500).send({ error: e.message });
   }
 };
 
@@ -50,7 +68,7 @@ const addToWishlist = async (req, res) => {
     // console.log("find");
     const existDress = user.wishlist.find((item) => item._id === req.body._id);
     if (!existDress) {
-      user.wishlist.push(req.body);
+      user.wishlist.push(req.body._id);
       await user.save();
     }
     res.status(201).send(user);
@@ -109,6 +127,7 @@ module.exports = {
   getUser,
   deleteUser,
   addToWishlist,
+  getWishList,
   deleteFromWishlist,
   addItems,
   deleteFromItems,

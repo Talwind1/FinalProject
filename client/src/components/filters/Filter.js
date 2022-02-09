@@ -30,7 +30,6 @@ function Filter({ dresses, conditions, userId }) {
   };
   const mapData = () => {
     return filterData(dresses).map((dress) => {
-      // console.log(dress);
       return (
         <DressComponent
           dress={dress}

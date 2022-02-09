@@ -9,9 +9,9 @@ const Wishlist = () => {
 
   const fetchWishList = async (userID) => {
     setLoading(true);
-    const { data } = await dressesApi.get(`/users/${userID}`);
+    const { data } = await dressesApi.get(`/users/wishlist/${userID}`);
     //  console.log(data.wishlist);
-    setWishlist(data.wishlist);
+    setWishlist(data);
     setLoading(false);
   };
   useEffect(() => {

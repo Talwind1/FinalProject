@@ -12,6 +12,7 @@ const {
   deleteFromWishlist,
   addItems,
   deleteFromItems,
+  getWishList,
 } = require("../controllers/user.controllers");
 
 router.post("/users", addUser);
@@ -22,6 +23,7 @@ router.delete("/users/:id", deleteUser);
 router.patch("/users/:id", updateUser);
 
 router.put("/users/wishadd/:id", addToWishlist);
+router.get("/users/wishlist/:id", getWishList);
 router.put("/users/wishdel/:id", deleteFromWishlist);
 
 router.put("/users/itemadd/:id", addItems);

@@ -8,17 +8,19 @@ function Login() {
   //process.env.CLIENT_ID;
 
   const handleLogin = async (res) => {
-    // console.log(res.googleId); //?
-    // console.log(res.profileObj);
-    // console.log(clientId);
+    console.log(res.googleId); //?
+    console.log(res.profileObj);
+    console.log(clientId);
     await window.localStorage.setItem("userToken", res.googleId);
+    //  console.log(window.localStorage);
     console.log(res.googleId, res.profileObj.email, res.profileObj.name);
     const user = {
       id: res.googleId,
       name: res.profileObj.name,
       email: res.profileObj.email,
     };
-    await dressesApi.post("/users", user);
+    console.log(user);
+    const done = await dressesApi.post("/users", user);
     refreshTokenSetup(res);
   };
 
