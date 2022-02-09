@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 
 function MyItems() {
   const [userId, setUserId] = useState("");
-  const [myItems, setMyItems] = useState(null);
+  const [myItems, setMyItems] = useState([]);
   const [show, setShow] = useState(false);
   const [showAdd, setAddShow] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -42,7 +42,6 @@ function MyItems() {
     setAddShow(!showAdd);
   };
   const showItems = () => {
-    console.log("show my items");
     setShow(!show);
   };
 
@@ -90,9 +89,7 @@ function MyItems() {
   };
 
   const mapItems = () => {
-    // if (myItems && myItems.length > 0) {
     return myItems.map((dress) => {
-      //
       return (
         <div className="dress-item" key={dress._id}>
           <DressItem
@@ -103,7 +100,6 @@ function MyItems() {
         </div>
       );
     });
-    // }
   };
 
   return loading ? (
