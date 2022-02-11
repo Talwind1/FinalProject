@@ -18,7 +18,7 @@ function Select({ type, options, handleSelect }) {
         className="stn"
       >
         <option defaultValue>{type}</option>
-        <option value={null}></option>
+        <option value={null}>All</option>
         {createOptions()}
       </select>
     </>

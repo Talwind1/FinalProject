@@ -6,7 +6,7 @@ import Login from "../google login/Login";
 import Logout from "../google login/Logout";
 import { useEffect, useState } from "react";
 
-function Header() {
+function Header({ setIsLogged }) {
   const [userName, setUserName] = useState(null);
 
   useEffect(() => {

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { BiHeartCircle } from "react-icons/bi";
-
 import { BsHeartFill } from "react-icons/bs";
 
 const DressComponent = ({ dress, wishlistAction, isWishlist }) => {

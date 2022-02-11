@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import dressesApi from "../../api/api";
-import { BsHeartFill } from "react-icons/bs";
+// import { BsHeartFill } from "react-icons/bs";
 import DressComponent from "../DressComponent";
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
@@ -19,23 +19,19 @@ const Wishlist = () => {
       const userLogged = localStorage.getItem("userToken");
       if (userLogged) {
         setUserId(userLogged);
-
         fetchWishList(userLogged);
       } else {
       }
     }
     setting();
   }, []);
-  // useEffect(() => {
-  //   mapWishlist();
-  // }, [wishlist]);
+
   const removeFromWishlist = async (dress) => {
-    const newWish = await dressesApi.put(`/users/wishdel/${userId}`, dress);
+    await dressesApi.put(`/users/wishdel/${userId}`, dress);
     fetchWishList(userId);
   };
 
   const mapWishlist = () => {
-    //displaying wishlist
     return (
       <div className="dresses" style={{ padding: "3%" }}>
         {wishlist.map((dress) => {

@@ -30,7 +30,6 @@ function Dresses() {
         data.forEach((dress) => {
           if (!cities.includes(dress.location)) {
             cities.push(capitalize(dress.location));
-            console.log(!cities.includes(dress.location));
           }
           if (!color.includes(dress.color)) {
             color.push(capitalize(dress.color));
@@ -58,7 +57,6 @@ function Dresses() {
         (name =
           name + " " + word[0].toUpperCase() + word.toLowerCase().substring(1))
     );
-    console.log(name);
     return name;
   };
   //creacte state of conditions to filter props

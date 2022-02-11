@@ -6,7 +6,6 @@ function Filter({ dresses, conditions, userId }) {
     let filtered = [...arr];
     if (conditions.location) {
       filtered = filtered.filter((dress) => {
-        // console.log(dress.url);
         return (
           conditions.location.toLowerCase() === dress.location.toLowerCase()
         );

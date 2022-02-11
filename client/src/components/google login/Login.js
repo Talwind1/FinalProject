@@ -1,28 +1,35 @@
 import { GoogleLogin, useGoogleLogin } from "react-google-login";
 import { refreshTokenSetup } from "./Utils.js";
 import dressesApi from "../../api/api";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 function Login({ name, nameFunc }) {
   const clientId =
     "514442198747-km71bl7977f80el5gsih4mq7fu2kk6sq.apps.googleusercontent.com";
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const handleLogin = async (res) => {
-    // console.log(res.googleId);
-    // console.log(res.profileObj);
-    // console.log(clientId);
+    window.localStorage.setItem("logged", true);
     window.localStorage.setItem("userToken", res.googleId);
     window.localStorage.setItem("userName", res.profileObj.name);
     nameFunc(res.profileObj.name);
-    const user = {
-      id: res.googleId,
-      name: res.profileObj.name,
-      email: res.profileObj.email,
-    };
-    await dressesApi.post("/users", user);
+    navigate("/");
+    try {
+      const user = {
+        id: res.googleId,
+        name: res.profileObj.name,
+        email: res.profileObj.email,
+      };
+      await dressesApi.post("/users", user);
+      console.log("hiiii");
+      console.log("workingggg");
+    } catch (e) {
+      console.table(e);
+    }
+
     refreshTokenSetup(res);
-    history.push("/dresses");
+    localStorage.setItem("logged", true);
   };
 
   const onFailure = (res) => {

@@ -1,5 +1,12 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Dresses from "../src/components/dresses/Dresses";
 import Header from "../src/components/navbar/Header";
 import MyItems from "../src/components/userItems/MyItems";
@@ -8,32 +15,27 @@ import Wishlist from "../src/components/wishlist/Wishlist";
 import SignIn from "./components/SignIn";
 import Login from "./components/google login/Login";
 import Dress from "../src/components/dresses/Dress";
+// import { useEffect, useState } from "react";
+
+const AuthUser = () => {
+  const isLogged = JSON.parse(localStorage.getItem("logged"));
+  return isLogged ? <Outlet /> : <Navigate to="/signin" />;
+};
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <Switch>
-          <>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/dresses">
-              <Dresses />
-            </Route>
-            <Route path="/my-items">
-              <MyItems />
-            </Route>
-            <Route path="/dress/:id" exact component={Dress} />
-            <Route path="/signin" exact component={SignIn} />{" "}
-            <Route path="/login" exact component={Login} />
-            <Route path="/wishlist">
-              <Wishlist />
-            </Route>
-          </>
-        </Switch>
-      </Router>
+      <Header />
+      <Routes>
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/dresses" element={<Dresses />} />
+        <Route path="/dress/:id" element={<Dress />} />
+        <Route path="/" element={<Home />} />
+        <Route element={<AuthUser />}>
+          <Route path="/my-items" element={<MyItems />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

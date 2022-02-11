@@ -1,12 +1,12 @@
 import React from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import dressesApi from "../../api/api";
 import ReactWhatsapp from "react-whatsapp";
 import whatup from "../../img/whatsup.png";
 
 const Dress = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { id } = useParams();
   const [dress, setDress] = useState(null);
   useEffect(() => {
@@ -27,7 +27,7 @@ const Dress = () => {
       <div className="dress-page">
         <button
           className="btn"
-          onClick={() => history.goBack()}
+          onClick={() => navigate(-1)}
           style={{ margin: "1.5%" }}
         >
           Back

@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import dressesApi from "../../api/api";
 import DressItem from "./DressItem";
 import Add from "../addDress/Add";
-import { GiPartyPopper } from "react-icons/gi";
+// import { GiPartyPopper } from "react-icons/gi";
 import { BsHeart } from "react-icons/bs";
 import { GiLargeDress } from "react-icons/gi";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 function MyItems() {
   const [userId, setUserId] = useState("");
@@ -14,28 +14,29 @@ function MyItems() {
   const [showAdd, setAddShow] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     let userToken = window.localStorage.getItem("userToken");
-    if (!userToken) {
-      history.push("/signin");
-    } else {
-      async function setting() {
-        try {
-          setLoading(true);
-          setUserId(userToken);
-          let { data } = await dressesApi.get(`/users/${userToken}`);
-          setMyItems(data.myItems);
-          setLoading(false);
-        } catch (e) {
-          console.log(e.message);
-        } finally {
-          setLoading(false);
-        }
+    // if (!userToken) {
+    //   history.push("/signin");
+    // }
+    // else {
+    async function setting() {
+      try {
+        setLoading(true);
+        setUserId(userToken);
+        let { data } = await dressesApi.get(`/users/${userToken}`);
+        setMyItems(data.myItems);
+        setLoading(false);
+      } catch (e) {
+        console.log(e.message);
+      } finally {
+        setLoading(false);
       }
-      setting();
     }
+    setting();
+    // }
   }, []);
 
   const addComp = () => {
@@ -74,9 +75,8 @@ function MyItems() {
   };
 
   const deleteDress = async (dress) => {
-    console.log("tts");
     try {
-      const deletedDress = await dressesApi.delete(`/dresses/${dress._id}`);
+      await dressesApi.delete(`/dresses/${dress._id}`);
       console.log(dress);
       const myNewItems = await dressesApi.put(
         `/users/itemDel/${userId}`,
@@ -120,9 +120,11 @@ function MyItems() {
       </div>
 
       <div className="dresses-container">{show && mapItems()}</div>
-      <div className="message">
-        Join the party - add your dress <BsHeart />
-        <GiLargeDress />
+      <div>
+        <div className="message">
+          Join the party - add your dress <BsHeart />
+          <GiLargeDress />
+        </div>
       </div>
     </div>
   );
