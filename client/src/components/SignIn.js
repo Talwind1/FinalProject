@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
-// import { useHistory } from "react-router-dom";
 import Login from "./google login/Login";
 import { BsHeartFill } from "react-icons/bs";
 function SignIn() {
-  // let history = useHistory();
-  // useEffect(() => {
-  //   if (isLogged) {
-  //     history.push("/my-items");
-  //   }
-  // });
   return (
     <div id="signin">
       <div className="signin-box">

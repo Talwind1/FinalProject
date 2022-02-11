@@ -2,10 +2,8 @@ import { useState, useEffect } from "react";
 import dressesApi from "../../api/api";
 import DressItem from "./DressItem";
 import Add from "../addDress/Add";
-// import { GiPartyPopper } from "react-icons/gi";
 import { BsHeart } from "react-icons/bs";
 import { GiLargeDress } from "react-icons/gi";
-// import { useHistory } from "react-router-dom";
 
 function MyItems() {
   const [userId, setUserId] = useState("");
@@ -14,21 +12,14 @@ function MyItems() {
   const [showAdd, setAddShow] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // const history = useHistory();
-
   useEffect(() => {
-    let userToken = window.localStorage.getItem("userToken");
-    // if (!userToken) {
-    //   history.push("/signin");
-    // }
-    // else {
+    const userToken = window.localStorage.getItem("userToken");
+    setUserId(userToken);
     async function setting() {
       try {
         setLoading(true);
-        setUserId(userToken);
-        let { data } = await dressesApi.get(`/users/${userToken}`);
-        setMyItems(data.myItems);
-        setLoading(false);
+        let { data } = await dressesApi.get(`/users/myitems/${userToken}`);
+        setMyItems(data);
       } catch (e) {
         console.log(e.message);
       } finally {
@@ -36,7 +27,6 @@ function MyItems() {
       }
     }
     setting();
-    // }
   }, []);
 
   const addComp = () => {
@@ -57,9 +47,9 @@ function MyItems() {
         owner: userId,
         phone: item.phone,
       };
-      const { data } = await dressesApi.post("dresses", newDress);
-      await dressesApi.put(`/users/itemadd/${userId}`, data.dress);
-      const items = [...myItems, data.dress];
+      const { data } = await dressesApi.post("/dresses", newDress);
+      await dressesApi.put(`/users/itemadd/${userId}`, data._id);
+      const items = [...myItems, data];
       setMyItems(items);
     } catch (e) {
       console.log(e.message);
@@ -114,17 +104,21 @@ function MyItems() {
           Show Items
         </button>
       </div>
+      {show && (
+        <div>
+          {myItems.length ? (
+            <div className="dresses-container"> {mapItems()} </div>
+          ) : (
+            <h1 className="message">
+              Add your dress- Join the party <GiLargeDress />
+            </h1>
+          )}{" "}
+        </div>
+      )}
+
       <div className="add-element">
         {" "}
         {showAdd && <Add clickFunc={createItem} userId={userId} />}
-      </div>
-
-      <div className="dresses-container">{show && mapItems()}</div>
-      <div>
-        <div className="message">
-          Join the party - add your dress <BsHeart />
-          <GiLargeDress />
-        </div>
       </div>
     </div>
   );

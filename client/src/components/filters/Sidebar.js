@@ -8,10 +8,6 @@ function Sidebar({ setConditions, locations, colors }) {
     price: "",
   });
 
-  // useEffect(() => {
-  //   console.log(props);
-  // }, []);
-
   const handleSelect = (value, type) => {
     const newValues = { ...values };
     newValues[type] = value;
@@ -42,7 +38,7 @@ function Sidebar({ setConditions, locations, colors }) {
         }}
         className="btn"
       >
-        Find me a dress
+        Find a dress
       </button>
     </div>
   );

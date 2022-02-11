@@ -29,6 +29,7 @@ const getAllUsers = async (req, res) => {
     res.status(400).send({ error: e.message });
   }
 };
+
 const getUser = async (req, res) => {
   try {
     const user = await User.findOne({ id: req.params.id });
@@ -42,13 +43,24 @@ const getUser = async (req, res) => {
 const getWishList = async (req, res) => {
   try {
     const user = await User.findOne({ id: req.params.id });
-
     let dresses = await Promise.all(
       user.wishlist.map(async (dressID) => {
         return await Dress.findById(dressID);
       })
     );
-    console.log(dresses);
+    return res.status(200).send(dresses);
+  } catch (e) {
+    res.status(500).send({ error: e.message });
+  }
+};
+const getMyItems = async (req, res) => {
+  try {
+    const user = await User.findOne({ id: req.params.id });
+    let dresses = await Promise.all(
+      user.myItems.map(async (dressID) => {
+        return await Dress.findById(dressID);
+      })
+    );
     return res.status(200).send(dresses);
   } catch (e) {
     res.status(500).send({ error: e.message });
@@ -67,8 +79,9 @@ const addToWishlist = async (req, res) => {
   const id = req.params.id;
   try {
     const user = await User.findOne({ id: id });
-    // console.log("find");
-    const existDress = user.wishlist.find((item) => item._id === req.body._id);
+    const existDress = user.wishlist.find(
+      (dressId) => dressId === req.body._id
+    );
     if (!existDress) {
       user.wishlist.push(req.body._id);
       await user.save();
@@ -78,12 +91,12 @@ const addToWishlist = async (req, res) => {
     res.status(500).send({ error: e.message });
   }
 };
+
 const deleteFromWishlist = async (req, res) => {
   const id = req.params.id;
   try {
     const user = await User.findOne({ id: id });
-
-    user.wishlist = user.wishlist.filter((item) => item._id !== req.body._id);
+    user.wishlist = user.wishlist.filter((dressId) => dressId !== req.body._id);
     await user.save();
     res.status(200).send(user);
   } catch (e) {
@@ -130,6 +143,7 @@ module.exports = {
   deleteUser,
   addToWishlist,
   getWishList,
+  getMyItems,
   deleteFromWishlist,
   addItems,
   deleteFromItems,

@@ -18,6 +18,10 @@
   font-family: futura-t;
   src: url("./font/Futura\ Bold\ font.ttf");
 }
+@font-face {
+  font-family: futura-pt;
+  src: url("./font/Futura/FuturaPTDemi.otf");
+}
 
 * {
   margin: 0;
@@ -139,10 +143,13 @@
 }
 .btn {
   border: none;
-  width: 12.5rem;
-  height: 3.125rem;
+  width: 8.5rem;
+  height: 2.55rem;
   font-family: futura;
   font-size: 1.3rem;
+  border: 2px solid #666666;
+  background-color: #eeeeee;
+  margin: 1%;
 }
 .stn {
   border: none;
@@ -197,6 +204,8 @@
 
 .btn:hover {
   text-shadow: 1px 1px #bfa2db;
+  border: 2px solid#7e7d80;
+  background-color: #bfa2db;
 }
 
 .home {
@@ -327,6 +336,7 @@
 }
 .hello-navbar h4 {
   text-align: left;
+  font-family: "futura-pt";
 }
 .wishlist {
   width: 100vw;
@@ -355,6 +365,7 @@
   margin: 10%;
   box-sizing: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   background-color: #f0d9ff;
+  opacity: 0.9;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 .loader {

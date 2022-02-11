@@ -60,7 +60,7 @@ const updateDress = async (req, res) => {
         size: req.body.size,
         location: req.body.location,
         url: req.body.url,
-        color: req.body.url,
+        color: req.body.color,
         price: req.body.price,
       },
     }

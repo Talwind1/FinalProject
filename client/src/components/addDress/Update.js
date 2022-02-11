@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Input from "./Input";
 function Update({ id, dress, clickFunc, userId }) {
+  const [msg, setMsg] = useState(false);
   const [item, setItem] = useState({
     size: dress.size,
     image: dress.image,
@@ -59,9 +60,19 @@ function Update({ id, dress, clickFunc, userId }) {
           />
         </li>
       </ul>
-      <button onClick={() => clickFunc(id, item)} className="btn">
+      <button
+        onClick={() => {
+          clickFunc(id, item);
+          setMsg(true);
+          setTimeout(() => {
+            setMsg(false);
+          }, 1500);
+        }}
+        className="btn"
+      >
         Submit
       </button>
+      {msg && <div>Item Updated!</div>}
     </div>
   );
 }

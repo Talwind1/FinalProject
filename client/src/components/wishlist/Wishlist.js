@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import dressesApi from "../../api/api";
-// import { BsHeartFill } from "react-icons/bs";
 import DressComponent from "../DressComponent";
+
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
   const [userId, setUserId] = useState(null);
@@ -10,7 +10,6 @@ const Wishlist = () => {
   const fetchWishList = async (userID) => {
     setLoading(true);
     const { data } = await dressesApi.get(`/users/wishlist/${userID}`);
-    //  console.log(data.wishlist);
     setWishlist(data);
     setLoading(false);
   };
@@ -55,6 +54,16 @@ const Wishlist = () => {
       className="wishlist"
       style={{ display: "flex", flexDirection: "column" }}
     >
+      <h1
+        style={{
+          padding: "1%",
+          fontFamily: "futura-pt",
+          fontSize: "2rem",
+          backgroundColor: "#ddd",
+        }}
+      >
+        Saved Items
+      </h1>
       {wishlist && mapWishlist()}
     </div>
   );
