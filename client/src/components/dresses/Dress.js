@@ -41,10 +41,25 @@ const Dress = () => {
             />
           </div>
           <div className="dress-details-page">
-            <p>Locate in {dress.location}</p>
-            <p>size {dress.size}</p>
+            <p>
+              <b style={{ fontFamily: "futura-pt", fontSize: "1.2rem" }}>
+                Location:
+              </b>{" "}
+              {dress.location}
+            </p>
+            <p>
+              <b style={{ fontFamily: "futura-pt", fontSize: "1.2rem" }}>
+                Size:
+              </b>{" "}
+              {dress.size.toUpperCase()}
+            </p>
 
-            <p>{dress.price}&#8362; </p>
+            <p>
+              <b style={{ fontFamily: "futura-pt", fontSize: "1.2rem" }}>
+                Price:
+              </b>{" "}
+              {dress.price}&#8362;{" "}
+            </p>
 
             <ReactWhatsapp
               number={"+972" + dress.phone.substring(1)} //dress.phone
@@ -56,12 +71,12 @@ const Dress = () => {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                  justifyContent: "center",
+                  justifyContent: "flex-end",
                   backgroundColor: "#f3f1f5",
                 }}
               >
                 <img src={whatup} alt="whatsup" style={{ width: "3.125rem" }} />
-                <p style={{ fontFamily: "futura", fontSize: "1.8em" }}>
+                <p style={{ fontFamily: "futura-pt", fontSize: "1.4em" }}>
                   Contact
                 </p>
               </div>

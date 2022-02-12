@@ -19,6 +19,7 @@ function MyItems() {
       try {
         setLoading(true);
         let { data } = await dressesApi.get(`/users/myitems/${userToken}`);
+        console.log(data);
         setMyItems(data);
       } catch (e) {
         console.log(e.message);
@@ -80,6 +81,7 @@ function MyItems() {
 
   const mapItems = () => {
     return myItems.map((dress) => {
+      console.log(myItems);
       return (
         <div className="dress-item" key={dress._id}>
           <DressItem
@@ -121,13 +123,13 @@ function MyItems() {
       </div>
       {show && (
         <div>
-          {myItems.length ? (
-            <div className="dresses-container"> {mapItems()} </div>
-          ) : (
-            <a className="message">
-              Add your dress- Join the party <GiLargeDress />
-            </a>
-          )}{" "}
+          {/* {myItems.length > 0 ? ( */}
+          <div className="dresses-container"> {mapItems()} </div>
+          {/* ) : ( */}
+          <a className="message">
+            Add your dress- Join the party <GiLargeDress />
+          </a>
+          {/* )}{" "} */}
         </div>
       )}
     </div>
