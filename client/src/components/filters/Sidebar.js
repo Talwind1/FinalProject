@@ -12,7 +12,12 @@ function Sidebar({ setConditions, locations, colors }) {
     const newValues = { ...values };
     newValues[type] = value;
     setValues(newValues);
+    console.log("values", values);
   };
+
+  // useEffect(() => {
+  //   console.log("colors", colors, "locations", locations);
+  // });
   // const cities = (dresses) => {
   //   let cities = [];
   //   dresses.forEach((dress) => {

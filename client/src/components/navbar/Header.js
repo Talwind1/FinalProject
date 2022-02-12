@@ -5,6 +5,8 @@ import { BsHeart } from "react-icons/bs";
 import Login from "../google login/Login";
 import Logout from "../google login/Logout";
 import { useEffect, useState } from "react";
+import { AiOutlineUserAdd } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 
 function Header({ setIsLogged }) {
   const [userName, setUserName] = useState(null);
@@ -31,7 +33,6 @@ function Header({ setIsLogged }) {
   return (
     <div className="header">
       <div className="links">
-        <Link to="/"> home</Link>
         <Link to="/dresses">
           <GiLargeDress />
         </Link>
@@ -42,21 +43,55 @@ function Header({ setIsLogged }) {
           <BsHeart />
         </Link>
       </div>
+      <div className="title">
+        <div
+          style={{ height: "100%", width: "20%", border: "1px  white solid" }}
+        >
+          hi
+        </div>
+        <Link to="/">One Night Dress</Link>
+      </div>
       <div
         className="login"
-        style={{ display: "flex", flexDirection: "row", margin: "2%" }}
+        style={{
+          // display: "flex",
+          // flexDirection: "row",
+          margin: "2%",
+          // alignItems: "flex-end",
+        }}
       >
         {userName ? (
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            {" "}
-            <div className="hello-navbar">
-              <h4>Hello </h4>
-              <h4> {userName}</h4>
-            </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Link to="/signin">
+              {" "}
+              <AiOutlineUserAdd />
+            </Link>{" "}
+            {/* <div className="hello-navbar"> */}
+            {/* <h4>Welcome </h4>
+              <h4> {userName}</h4> */}
             <Logout name={userName} nameFunc={setUserName} />
+            {/* </div> */}
           </div>
         ) : (
-          <Login name={userName} nameFunc={setUserName} />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Link to="/">
+              {" "}
+              <AiOutlineUser />{" "}
+            </Link>{" "}
+            <Login name={userName} nameFunc={setUserName} />
+          </div>
         )}
       </div>
     </div>

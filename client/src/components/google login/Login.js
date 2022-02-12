@@ -40,7 +40,7 @@ function Login({ name, nameFunc }) {
     <div>
       <GoogleLogin
         clientId={clientId}
-        buttonText="Sign in with Google"
+        buttonText="Join"
         onSuccess={handleLogin}
         onFailure={onFailure}
         cookiePolicy={"single_host_origin"}

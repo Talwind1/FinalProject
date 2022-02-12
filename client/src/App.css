@@ -93,21 +93,24 @@
 .title {
   display: flex;
   flex-direction: row;
-  font-family: futura-m;
-  font-size: 4.4em;
+  width: 50%;
+  text-align: center;
+  font-size: 1.5rem;
   color: #f3f1f5;
+  font-family: futura-pt;
+  /* border: 1px white solid; */
 }
 .title:hover {
   display: flex;
   flex-direction: row;
-  font-family: futura-m;
-  font-size: 4.3em;
-  color: #f0d9ff;
+  /* font-family: futura-m; */
+  /* font-size: 4.3em; */
+  color: rgb(189, 75, 75);
 }
 
 .header {
   height: 7vh;
-  background-color: #333;
+  background-color: black;
   color: #fff;
   display: flex;
   flex-direction: row;
@@ -126,20 +129,20 @@
 }
 
 .header a:hover {
-  color: #f0d9ff;
+  color: rgb(189, 75, 75);
   opacity: 0.9;
 }
 .links {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 .login {
   margin: 3%;
 }
 .login:hover {
-  background-color: #bfa2db;
+  background-color: rgb(189, 75, 75);
 }
 .btn {
   border: none;
@@ -148,7 +151,7 @@
   font-family: futura;
   font-size: 1.3rem;
   border: 2px solid #666666;
-  background-color: #eeeeee;
+  background-color: #f3f1f5;
   margin: 1%;
 }
 .stn {
@@ -203,15 +206,13 @@
 }
 
 .btn:hover {
-  text-shadow: 1px 1px #bfa2db;
+  text-shadow: 1px 1px rgb(189, 75, 75);
   border: 2px solid#7e7d80;
-  background-color: #bfa2db;
+  background-color: rgb(189, 75, 75);
 }
-
 .home {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://images.shift.how/BorrowClothesSpecialOccasions_becca-mchaffie_Desktop.jpg")
-      center center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+    url("./img/dress-2.JPG  ") center center/cover no-repeat;
   opacity: 0.9;
   font-family: futura;
   height: 100vh;
@@ -287,7 +288,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "futura";
+  font-family: futura-pt;
   margin: auto;
 }
 /* .sign-message h3 {
@@ -299,11 +300,11 @@
   justify-content: start;
 }
 .dress-details-page p {
-  font-family: "futura";
+  font-family: futura;
   padding: 2%;
   margin: 2%;
   width: 50%;
-  font-size: 1.6em;
+  font-size: 1.1em;
 }
 
 .dress-pic-page img {
@@ -329,14 +330,14 @@
   flex-direction: column;
   align-items: left;
   justify-content: center;
-  font-family: "futura";
+  font-family: futura-pt;
   padding: 2%;
   width: 30%;
   width: 100%;
 }
 .hello-navbar h4 {
   text-align: left;
-  font-family: "futura-pt";
+  font-family: futura-pt;
 }
 .wishlist {
   width: 100vw;
@@ -347,7 +348,7 @@
 
 .signin-box {
   margin: auto;
-  background-color: #f0d9ff;
+  background-color: rgb(189, 75, 75);
   padding: 5%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
   display: flex;
@@ -364,7 +365,7 @@
   padding: 4%;
   margin: 10%;
   box-sizing: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  background-color: #f0d9ff;
+  background-color: rgb(189, 75, 75);
   opacity: 0.9;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
