@@ -43,21 +43,23 @@ function Header({ setIsLogged }) {
           <BsHeart />
         </Link>
       </div>
-      <div className="title">
-        <div
-          style={{ height: "100%", width: "20%", border: "1px  white solid" }}
-        >
-          hi
-        </div>
+      <div
+        className="title"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          marginLeft: "5%",
+        }}
+      >
+        {" "}
         <Link to="/">One Night Dress</Link>
       </div>
       <div
         className="login"
         style={{
-          // display: "flex",
-          // flexDirection: "row",
           margin: "2%",
-          // alignItems: "flex-end",
         }}
       >
         {userName ? (
@@ -70,7 +72,7 @@ function Header({ setIsLogged }) {
           >
             <Link to="/signin">
               {" "}
-              <AiOutlineUserAdd />
+              <AiOutlineUser />
             </Link>{" "}
             {/* <div className="hello-navbar"> */}
             {/* <h4>Welcome </h4>
@@ -88,7 +90,7 @@ function Header({ setIsLogged }) {
           >
             <Link to="/">
               {" "}
-              <AiOutlineUser />{" "}
+              <AiOutlineUserAdd />{" "}
             </Link>{" "}
             <Login name={userName} nameFunc={setUserName} />
           </div>

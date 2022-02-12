@@ -93,18 +93,14 @@
 .title {
   display: flex;
   flex-direction: row;
-  width: 50%;
-  text-align: center;
   font-size: 1.5rem;
   color: #f3f1f5;
   font-family: futura-pt;
-  /* border: 1px white solid; */
+  width: 100%;
 }
 .title:hover {
   display: flex;
   flex-direction: row;
-  /* font-family: futura-m; */
-  /* font-size: 4.3em; */
   color: rgb(189, 75, 75);
 }
 
@@ -202,6 +198,8 @@
 .dress-row {
   display: flex;
   flex-direction: row;
+  /* justify-content: space-between; */
+  /* align-items: center; */
   justify-content: center;
 }
 
@@ -277,11 +275,10 @@
 .dress-page {
   display: flex;
   flex-direction: column;
-  /* height: 100%; */
+  height: 100%;
   /* margin: 4%; */
   background-color: #f3f1f5;
   width: 100vw;
-  height: 90vh;
 }
 .sign-message {
   display: flex;
