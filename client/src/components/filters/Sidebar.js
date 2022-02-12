@@ -8,25 +8,14 @@ function Sidebar({ setConditions, locations, colors }) {
     price: "",
   });
 
+  useEffect(() => {
+    console.log("values", values);
+  }, [values]);
   const handleSelect = (value, type) => {
     const newValues = { ...values };
     newValues[type] = value;
     setValues(newValues);
-    console.log("values", values);
   };
-
-  // useEffect(() => {
-  //   console.log("colors", colors, "locations", locations);
-  // });
-  // const cities = (dresses) => {
-  //   let cities = [];
-  //   dresses.forEach((dress) => {
-  //     if (!cities.includes(dress.location.toLowerCase())) {
-  //       cities.push(rewrite(dress.location));
-  //     }
-  //     return cities;
-  //   });
-  // };
 
   return (
     <div className="Sidebar">

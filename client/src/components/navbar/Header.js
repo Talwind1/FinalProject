@@ -50,7 +50,7 @@ function Header({ setIsLogged }) {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          marginLeft: "5%",
+          marginLeft: "6%",
         }}
       >
         {" "}
@@ -68,17 +68,14 @@ function Header({ setIsLogged }) {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
+              // border: "1px solid white",
             }}
           >
-            <Link to="/signin">
+            <Link to="/my-items">
               {" "}
               <AiOutlineUser />
             </Link>{" "}
-            {/* <div className="hello-navbar"> */}
-            {/* <h4>Welcome </h4>
-              <h4> {userName}</h4> */}
             <Logout name={userName} nameFunc={setUserName} />
-            {/* </div> */}
           </div>
         ) : (
           <div
@@ -86,9 +83,10 @@ function Header({ setIsLogged }) {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
+              // border: "1px solid white",
             }}
           >
-            <Link to="/">
+            <Link to="/signin">
               {" "}
               <AiOutlineUserAdd />{" "}
             </Link>{" "}

@@ -46,9 +46,15 @@ function Dresses() {
     fetching();
   }, []);
 
+  useEffect(() => {
+    //*
+    console.log(conditions);
+  }, [conditions]);
   const filterDresses = (values) => {
     setConditions(values);
+    console.log("conditions", conditions);
   };
+
   const capitalize = (location) => {
     let splited = location.split(" ");
     let name = "";
@@ -72,6 +78,17 @@ function Dresses() {
     <div className="loader" />
   ) : (
     <div>
+      {" "}
+      <h1
+        style={{
+          padding: "1%",
+          fontFamily: "futura-pt",
+          fontSize: "2rem",
+          backgroundColor: "#ddd",
+        }}
+      >
+        Dresses
+      </h1>
       <Sidebar
         setConditions={filterDresses}
         locations={locations}

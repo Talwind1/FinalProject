@@ -12,6 +12,8 @@ function Filter({ dresses, conditions, userId }) {
       });
     }
     if (conditions.color) {
+      console.log(conditions.color);
+      console.log(filtered[0].color);
       console.log("in");
       filtered = filtered.filter(
         (dress) => conditions.color.toLowerCase() === dress.color.toLowerCase()
@@ -29,7 +31,7 @@ function Filter({ dresses, conditions, userId }) {
     await dressesApi.put(`/users/wishadd/${userId}`, dress);
   };
   const mapData = () => {
-    console.log(filterData(dresses));
+    console.log("filters", conditions);
     return filterData(dresses).map((dress) => {
       return (
         <DressComponent

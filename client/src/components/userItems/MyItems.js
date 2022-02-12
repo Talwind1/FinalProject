@@ -96,6 +96,17 @@ function MyItems() {
     <div className="loader" />
   ) : (
     <div className="my-items">
+      {" "}
+      <h1
+        style={{
+          padding: "1%",
+          fontFamily: "futura-pt",
+          fontSize: "2rem",
+          backgroundColor: "#ddd",
+        }}
+      >
+        My Items
+      </h1>
       <div className="buttons">
         <button onClick={addComp} className="btn">
           add a dress
@@ -104,22 +115,21 @@ function MyItems() {
           Show Items
         </button>
       </div>
+      <div className="add-element">
+        {" "}
+        {showAdd && <Add clickFunc={createItem} userId={userId} />}
+      </div>
       {show && (
         <div>
           {myItems.length ? (
             <div className="dresses-container"> {mapItems()} </div>
           ) : (
-            <h1 className="message">
+            <a className="message">
               Add your dress- Join the party <GiLargeDress />
-            </h1>
+            </a>
           )}{" "}
         </div>
       )}
-
-      <div className="add-element">
-        {" "}
-        {showAdd && <Add clickFunc={createItem} userId={userId} />}
-      </div>
     </div>
   );
 }
