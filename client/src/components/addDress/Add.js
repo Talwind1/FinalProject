@@ -52,11 +52,6 @@ function Add({ clickFunc, userId }) {
             value={item.location}
             handleChange={(e) => handleChange(e.target)}
           />
-          <Input
-            type="url"
-            value={item.url}
-            handleChange={(e) => handleChange(e.target)}
-          />
         </li>
         <li>
           <Input
@@ -64,6 +59,16 @@ function Add({ clickFunc, userId }) {
             value={item.color}
             handleChange={(e) => handleChange(e.target)}
           />
+        </li>
+        <li>
+          <Input
+            type="url"
+            value={item.url}
+            handleChange={(e) => handleChange(e.target)}
+          />
+        </li>
+        <li>
+          <input type="file"></input>
         </li>
       </ul>
       <button
