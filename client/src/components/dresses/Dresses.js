@@ -28,11 +28,11 @@ function Dresses() {
         const { data } = await dressesApi.get("/dresses"); //api call get dresses
         setDresses(data);
         data.forEach((dress) => {
-          if (!cities.includes(dress.location)) {
-            cities.push(capitalize(dress.location));
+          if (!cities.includes(capitalize(dress.location))) {
+            cities.push(dress.location);
           }
-          if (!color.includes(dress.color)) {
-            color.push(capitalize(dress.color));
+          if (!color.includes(capitalize(dress.color))) {
+            color.push(dress.color);
           }
         });
         setLocations(cities);
@@ -47,7 +47,6 @@ function Dresses() {
   }, []);
 
   useEffect(() => {
-    //*
     console.log(conditions);
   }, [conditions]);
   const filterDresses = (values) => {
@@ -57,12 +56,15 @@ function Dresses() {
 
   const capitalize = (location) => {
     let splited = location.split(" ");
-    let name = "";
-    splited.forEach(
-      (word) =>
-        (name =
-          name + " " + word[0].toUpperCase() + word.toLowerCase().substring(1))
-    );
+    let name =
+      splited[0][0].toUpperCase() + splited[0].substring(1).toLowerCase();
+    for (let i = 1; i < splited.length; i++) {
+      name =
+        name +
+        " " +
+        name[i][0].toUpperCase() +
+        name[i].substring(1).toLowerCase();
+    }
     return name;
   };
   //creacte state of conditions to filter props

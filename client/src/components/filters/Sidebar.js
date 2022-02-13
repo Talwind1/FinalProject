@@ -11,9 +11,13 @@ function Sidebar({ setConditions, locations, colors }) {
   useEffect(() => {
     console.log("values", values);
   }, [values]);
+
   const handleSelect = (value, type) => {
     const newValues = { ...values };
     newValues[type] = value;
+    if (value === "All") {
+      newValues[type] = null;
+    }
     setValues(newValues);
   };
 

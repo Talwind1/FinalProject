@@ -79,6 +79,7 @@ const Dress = () => {
                 <p style={{ fontFamily: "futura-pt", fontSize: "1.4em" }}>
                   Contact
                 </p>
+                the
               </div>
             </ReactWhatsapp>
           </div>
