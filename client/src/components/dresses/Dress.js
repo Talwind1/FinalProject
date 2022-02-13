@@ -79,9 +79,28 @@ const Dress = () => {
                 <p style={{ fontFamily: "futura-pt", fontSize: "1.4em" }}>
                   Contact
                 </p>
-                the
               </div>
             </ReactWhatsapp>
+            {/* <div
+              style={{
+                height: "20%",
+                backgroundColor: "#ddd",
+                width: "60%",
+                padding: "5%",
+                margin: "5%",
+              }}
+            >
+              <h6
+                style={{
+                  padding: "1%",
+                  fontFamily: "futura-pt",
+                  // fontSize: "2rem",
+                  backgroundColor: "#ddd",
+                }}
+              >
+                Sizing
+              </h6>
+            </div> */}
           </div>
         </div>
       </div>

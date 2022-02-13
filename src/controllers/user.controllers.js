@@ -58,7 +58,7 @@ const getMyItems = async (req, res) => {
     const user = await User.findOne({ id: req.params.id });
     let dresses = await Promise.all(
       user.myItems.map(async (dressID) => {
-        return await Dress.findOne({ _id: dressID });
+        return await Dress.findById(dressID);
       })
     );
     return res.status(200).send(dresses);

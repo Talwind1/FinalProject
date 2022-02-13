@@ -308,6 +308,12 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  /* background: linear-gradient( */
+  /* rgba(236, 234, 234, 0.25),
+      rgba(248, 235, 235, 0.25)
+    ),
+    url("./img/dress-2.JPG  ") center center/cover no-repeat;
+  opacity: 0.9; */
 }
 .dress-details-page p {
   font-family: futura;
