@@ -12,19 +12,24 @@ function MyItems() {
   const [showAdd, setAddShow] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const fetching = async (userID) => {
+    try {
+      setLoading(true);
+      let { data } = await dressesApi.get(`/users/myitems/${userID}`);
+      setMyItems(data);
+    } catch (e) {
+      console.log(e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const userToken = window.localStorage.getItem("userToken");
-    setUserId(userToken);
     async function setting() {
-      try {
-        setLoading(true);
-        let { data } = await dressesApi.get(`/users/myitems/${userToken}`);
-        console.log(data);
-        setMyItems(data);
-      } catch (e) {
-        console.log(e.message);
-      } finally {
-        setLoading(false);
+      const userLogged = window.localStorage.getItem("userToken");
+      if (userLogged) {
+        setUserId(userLogged);
+        fetching(userLogged);
       }
     }
     setting();
@@ -32,6 +37,7 @@ function MyItems() {
 
   const addComp = () => {
     setAddShow(!showAdd);
+    setShow(false);
   };
   const showItems = () => {
     setShow(!show);

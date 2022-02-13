@@ -19,7 +19,6 @@ const Wishlist = () => {
       if (userLogged) {
         setUserId(userLogged);
         fetchWishList(userLogged);
-      } else {
       }
     }
     setting();
