@@ -4,19 +4,19 @@ const validator = require("validator");
 const dressSchema = mongoose.Schema({
   location: {
     type: String,
-    required: true,
+    // required: true,
   },
   price: {
     type: String,
-    required: true,
+    // required: true,
   },
   color: {
     type: String,
-    required: true,
+    // required: true,
   },
   size: {
     type: String,
-    required: true,
+    // required: true,
   },
   url: { type: String },
 
@@ -25,6 +25,9 @@ const dressSchema = mongoose.Schema({
   },
   phone: {
     type: String,
+  },
+  picture: {
+    type: Buffer,
   },
 });
 

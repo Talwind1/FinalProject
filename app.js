@@ -26,45 +26,13 @@ mongoose.connect(MONGOOSE_URI, (error, mongo) => {
 app.listen(port, () => {
   console.log("Server is up on port " + port);
 });
-
-// const multer = require("multer");
-// const upload = multer({
-//   //  dest: "dresses", //router.post buffer
-//   limits: { fileSize: 1000000 },
-//   fileFilter(req, file, cb) {
-//     if (
-//       !file.originalname.endsWith(".jpg") &&
-//       !file.originalname.endsWith(".png")
-//     ) {
-//       return cb(new Error("Please upload Png or Jpg file"));
-//     }
-
-//     cb(undefined, true);
-//   },
+// app.configure(function () {
+//   app.use(express.bodyParser());
 // });
+// var bodyParser = require('body-parser')
 
-// app.post(
-//   "dresses/upload",
-//   upload.single("upload"),
-//   async (req, res) => {
-//     req.dress.img = req.file.buffer; //instead of file destination
-//     await req.dress.save();
-//     res.send();
-//   },
-//   (error, req, res, next) => {
-//     res.status(400).send({ error: error.message }); //
-//     //middleware
-//   }
-// );
+// // parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }))
 
-// //dressRouter
-// const multer = require("multer");
-// const upload = multer({ dest: "dresses" });
-
-// dressRouter.post(
-//   "/dresses/upload/:id",
-//   upload.single("dress") /*dress is a key when registering the middleware*/,
-//   (req, res) => {
-//     res.send();
-//   }
-// );
+// // parse application/json
+// app.use(bodyParser.json())

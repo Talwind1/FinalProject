@@ -238,6 +238,21 @@
   }
 }
 
+@media screen and (max-width: 528px) {
+  .header {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 640px) {
+  .dresses {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 375px) {
+  .dresses {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .dress-item {
   font-family: futura;
   position: relative;
@@ -275,7 +290,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  /* margin: 4%; */
   background-color: #f3f1f5;
   width: 100vw;
 }
@@ -288,7 +302,7 @@
   margin: auto;
 }
 
-.animate {
+/* .animate {
   color: white;
   font-size: 10rem;
   white-space: nowrap;
@@ -298,22 +312,15 @@
 @media (max-width: 900px) {
   .animate {
     color: white;
-    /* font-size: 5rem; */
     font-size: 19vw;
     white-space: nowrap;
   }
-}
+} */
 .signin {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* background: linear-gradient( */
-  /* rgba(236, 234, 234, 0.25),
-      rgba(248, 235, 235, 0.25)
-    ),
-    url("./img/dress-2.JPG  ") center center/cover no-repeat;
-  opacity: 0.9; */
 }
 .dress-details-page p {
   font-family: futura;
@@ -330,7 +337,6 @@
 }
 
 .dress-details-page {
-  /* margin: 2%; */
   width: 30%;
   padding: 1% 5%;
   text-align: left;
@@ -358,7 +364,6 @@
 .wishlist {
   width: 100vw;
   height: 90vh;
-  /* grid-template-columns: ; */
   background-color: #f3f1f5;
 }
 

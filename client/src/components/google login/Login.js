@@ -1,4 +1,4 @@
-import { GoogleLogin, useGoogleLogin } from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 import { refreshTokenSetup } from "./Utils.js";
 import dressesApi from "../../api/api";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ function Login({ name, nameFunc }) {
   let navigate = useNavigate();
 
   const handleLogin = async (res) => {
+    console.log(res);
     window.localStorage.setItem("logged", true);
     window.localStorage.setItem("userToken", res.googleId);
     window.localStorage.setItem("userName", res.profileObj.name);

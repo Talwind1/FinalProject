@@ -1,10 +1,8 @@
 import { useState } from "react";
-
 import Input from "./Input";
 function Add({ clickFunc, userId }) {
   const [item, setItem] = useState({
     size: "",
-    // image: "",
     color: "",
     phone: "",
     location: "",
@@ -67,9 +65,6 @@ function Add({ clickFunc, userId }) {
             handleChange={(e) => handleChange(e.target)}
           />
         </li>
-        <li>
-          <input type="file"></input>
-        </li>
       </ul>
       <button
         onClick={() => {
@@ -93,11 +88,7 @@ function Add({ clickFunc, userId }) {
       >
         Add
       </button>
-      {msg && (
-        <div className="message" className="stn">
-          Item uploaded!
-        </div>
-      )}
+      {msg && <div className="message stn">Item uploaded!</div>}
     </div>
   );
 }

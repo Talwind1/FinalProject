@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import dressesApi from "../../api/api";
 import DressItem from "./DressItem";
 import Add from "../addDress/Add";
-import { BsHeart } from "react-icons/bs";
 import { GiLargeDress } from "react-icons/gi";
 
 function MyItems() {
@@ -129,13 +128,10 @@ function MyItems() {
       </div>
       {show && (
         <div>
-          {/* {myItems.length > 0 ? ( */}
           <div className="dresses-container"> {mapItems()} </div>
-          {/* ) : ( */}
           <a className="message">
             Add your dress- Join the party <GiLargeDress />
           </a>
-          {/* )}{" "} */}
         </div>
       )}
     </div>
