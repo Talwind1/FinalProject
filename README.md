@@ -4,9 +4,9 @@ Built using react (hooks), styled components, react router. Express server & mon
 
 ## Live link at [https://onenightdress.herokuapp.com/](https://onenightdress.herokuapp.com/)
 
-![Home page screenshot](https://github.com/[talwind1]/FinalProject/blob/main/src/Assets/images/homepage.jpg?raw=true)
-![Dresses gallery page screenshot](https://github.com/[talwind1]/FinalProject/blob/main/src/Assets/images/dresses.jpg?raw=true)
-![Some pages are for sigend users only](https://github.com/[talwind1]/[FinalProject]/blob/main/src/Assets/images/signin.jpg?raw=true)
+![Home page screenshot](https://github.com/talwind1/FinalProject/blob/main/src/Assets/images/homepage.jpg?raw=true)
+![Dresses gallery page screenshot](https://github.com/talwind1/FinalProject/blob/main/src/Assets/images/dresses.jpg?raw=true)
+![Some pages are for sigend users only](https://github.com/talwind1/FinalProject/blob/main/src/Assets/images/signin.jpg?raw=true)
 In the project directory, you can run:
 
 ## App Instructions:
