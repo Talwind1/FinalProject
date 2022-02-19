@@ -15,8 +15,8 @@ Built using react (hooks), styled components, react router. Express server & mon
 ## App Instructions:
 
 - This app is a platform to connect between users for renting a dress for 24 hours.
-- Each user can choose a dress and make a contact to the dress owner, by Whatsapp.
-- Only Signed Users can add their dresses for rent, and saved their liked items
+- Each user can choose a dress and can make a contact with a dress owner, by Whatsapp.
+- Signed Users can add their dresses for rent, and saved their favorite items.
 
 ## Acknoledgements
 
