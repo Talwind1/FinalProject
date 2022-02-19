@@ -2,7 +2,6 @@ import { GoogleLogin } from "react-google-login";
 import { refreshTokenSetup } from "./Utils.js";
 import dressesApi from "../../api/api";
 import { useNavigate } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
 
 function Login({ name, nameFunc }) {
   const clientId =

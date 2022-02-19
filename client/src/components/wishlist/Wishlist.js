@@ -10,6 +10,7 @@ const Wishlist = () => {
   const fetchWishList = async (userID) => {
     setLoading(true);
     const { data } = await dressesApi.get(`/users/wishlist/${userID}`);
+    console.log(data);
     setWishlist(data);
     setLoading(false);
   };
@@ -33,7 +34,6 @@ const Wishlist = () => {
     return (
       <div className="dresses" style={{ padding: "3%" }}>
         {wishlist.map((dress) => {
-          dress.isWishListed = true;
           return (
             <DressComponent
               isWishlist={true}
@@ -63,7 +63,7 @@ const Wishlist = () => {
       >
         Saved Items
       </h1>
-      {wishlist && mapWishlist()}
+      {wishlist?.length && mapWishlist()}
     </div>
   );
 };

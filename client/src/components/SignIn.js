@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Login from "./google login/Login";
+import React from "react";
 import { BsHeartFill } from "react-icons/bs";
 function SignIn() {
   return (

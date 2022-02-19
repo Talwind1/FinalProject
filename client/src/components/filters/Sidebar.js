@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Select from "./Select";
 function Sidebar({ setConditions, locations, colors }) {
   const [values, setValues] = useState({
@@ -8,9 +8,9 @@ function Sidebar({ setConditions, locations, colors }) {
     price: "",
   });
 
-  useEffect(() => {
-    console.log("values", values);
-  }, [values]);
+  // useEffect(() => {
+  //   console.log("values", values);
+  // }, [values]);
 
   const handleSelect = (value, type) => {
     const newValues = { ...values };
