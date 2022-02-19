@@ -4,17 +4,14 @@ const User = require("../model/userModel");
 
 const addUser = async (req, res) => {
   try {
-    const foundUser = User.findOne({ id: req.params.id });
-    if (!foundUser) {
-      const user = new User({
-        email: req.body.email,
-        name: req.body.name,
-        id: req.body.id,
-      });
+    const user = new User({
+      email: req.body.email,
+      name: req.body.name,
+      id: req.body.id,
+    });
 
-      await user.save();
-      return res.status(201).send(user);
-    }
+    await user.save();
+    return res.status(201).send(user);
   } catch (e) {
     return res.status(500).send({ error: e.message });
   }
@@ -77,11 +74,14 @@ const deleteUser = async (req, res) => {
 
 const addToWishlist = async (req, res) => {
   const id = req.params.id;
+  console.log("iddd", id);
+  const dressId = req.body._id;
+  console.log("id dress is", dressId);
   try {
     const user = await User.findOne({ id: id });
-    const existDress = user.wishlist.find(
-      (dressId) => dressId === req.body._id
-    );
+    console.log("hi wish", user);
+    const existDress = user.wishlist.find((ID) => dressId === ID);
+    console.log("exist is", existDress);
     if (!existDress) {
       user.wishlist.push(req.body._id);
       await user.save();
@@ -108,7 +108,7 @@ const addItems = async (req, res) => {
   const id = req.params.id;
   try {
     const user = await User.findOne({ id: id });
-
+    console.log(req.body);
     user.myItems.push(req.body);
     await user.save();
     res.status(201).send(user);

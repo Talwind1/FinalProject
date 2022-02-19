@@ -15,6 +15,7 @@ function MyItems() {
     try {
       setLoading(true);
       let { data } = await dressesApi.get(`/users/myitems/${userID}`);
+      console.log(data);
       setMyItems(data);
     } catch (e) {
       console.log(e.message);
@@ -54,7 +55,7 @@ function MyItems() {
         phone: item.phone,
       };
       const { data } = await dressesApi.post("/dresses", newDress);
-      await dressesApi.put(`/users/itemadd/${userId}`, data._id);
+      await dressesApi.put(`/users/itemadd/${userId}`, data);
       const items = [...myItems, data];
       setMyItems(items);
     } catch (e) {
@@ -129,7 +130,11 @@ function MyItems() {
       {show && (
         <div>
           <div className="dresses-container"> {mapItems()} </div>
-          <a className="message">
+          <a
+            className="message"
+            href="/my-items"
+            style={{ textDecoration: "none" }}
+          >
             Add your dress- Join the party <GiLargeDress />
           </a>
         </div>

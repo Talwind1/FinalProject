@@ -40,7 +40,7 @@ const DressComponent = ({ dress, wishlistAction, isWishlist }) => {
             }}
           >
             <p>
-              {dress.location}, Size: {dress.size}
+              {dress.location}, Size: {dress.size.toUpperCase()}
             </p>
           </div>
         </div>

@@ -63,7 +63,17 @@ const Wishlist = () => {
       >
         Saved Items
       </h1>
-      {wishlist?.length && mapWishlist()}
+      {wishlist?.length ? (
+        mapWishlist()
+      ) : (
+        <a
+          className="message"
+          href="/dresses"
+          style={{ textDecoration: "none" }}
+        >
+          Add dresses to your wishlist
+        </a>
+      )}
     </div>
   );
 };

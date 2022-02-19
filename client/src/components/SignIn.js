@@ -17,7 +17,6 @@ function SignIn() {
         style={{
           margin: "auto",
           height: "60%",
-          // border: "1px solid black",
           width: "50%",
         }}
       >

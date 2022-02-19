@@ -21,7 +21,7 @@ function Login({ name, nameFunc }) {
         name: res.profileObj.name,
         email: res.profileObj.email,
       };
-      await dressesApi.post("/users", user);
+      await dressesApi.post(`/users`, user);
       console.log("hiiii");
       console.log("workingggg");
     } catch (e) {
