@@ -29,10 +29,10 @@ function Dresses() {
         setDresses(data);
         data.forEach((dress) => {
           if (!cities.includes(capitalize(dress.location))) {
-            cities.push(dress.location);
+            cities.push(capitalize(dress.location));
           }
           if (!color.includes(capitalize(dress.color))) {
-            color.push(dress.color);
+            color.push(capitalize(dress.color));
           }
         });
         setLocations(cities);

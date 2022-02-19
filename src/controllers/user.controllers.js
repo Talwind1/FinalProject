@@ -53,6 +53,7 @@ const getWishList = async (req, res) => {
 const getMyItems = async (req, res) => {
   try {
     const user = await User.findOne({ id: req.params.id });
+    console.log("user", user);
     let dresses = await Promise.all(
       user.myItems.map(async (dressID) => {
         return await Dress.findById(dressID);

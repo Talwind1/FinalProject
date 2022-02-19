@@ -36,18 +36,18 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .title {
-    font-size: 0.5em;
+  .header {
+    height: 2;
   }
 }
 @media screen and (max-width: 640px) {
-  .title {
-    font-size: 0.5em;
+  .header {
+    height: 10vh;
   }
 }
 @media screen and (max-width: 375px) {
-  .title {
-    font-size: 0.3em;
+  .header {
+    height: 12vh;
   }
 }
 .logo {

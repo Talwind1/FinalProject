@@ -5,7 +5,6 @@ const User = require("../model/userModel");
 const getAllDresses = async (req, res) => {
   try {
     const dresses = await Dress.find({});
-
     if (!dresses) {
       res.status(400).send("no dresses found");
     }
