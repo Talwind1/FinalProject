@@ -4,8 +4,11 @@ Built using react (hooks), styled components, react router. Express server & mon
 
 ## Live link at [https://onenightdress.herokuapp.com/](https://onenightdress.herokuapp.com/)
 
+### Home page screenshot
 ![Home page screenshot](https://github.com/talwind1/FinalProject/blob/main/src/Assets/images/homepage.jpg?raw=true)
+### Dresses gallery page screenshot
 ![Dresses gallery page screenshot](https://github.com/talwind1/FinalProject/blob/main/src/Assets/images/dresses.jpg?raw=true)
+### Some pages are for sigend users only
 ![Some pages are for sigend users only](https://github.com/talwind1/FinalProject/blob/main/src/Assets/images/signin.js.jpg?raw=true)
 
 
@@ -17,7 +20,7 @@ Built using react (hooks), styled components, react router. Express server & mon
 
 ## Acknoledgements
 
-- bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 - Navbar and Buttons Icons by [https://react-icons.github.io/react-icons](https://react-icons.github.io/react-icons)
 - React Google login Authenticaion [npm package react-google-login](https://www.npmjs.com/package/react-google-login)
 - Whatsapp npm package for contact between users [npm package react-whatsapp](https://www.npmjs.com/package/react-whatsapp)
