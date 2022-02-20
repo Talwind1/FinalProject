@@ -41,6 +41,7 @@ function MyItems() {
   };
   const showItems = () => {
     setShow(!show);
+    setAddShow(false);
   };
 
   const createItem = async (item) => {
@@ -55,7 +56,7 @@ function MyItems() {
         phone: item.phone,
       };
       const { data } = await dressesApi.post("/dresses", newDress);
-      await dressesApi.put(`/users/itemadd/${userId}`, data);
+      await dressesApi.put(`/users/itemadd/${userId}`, data._id);
       const items = [...myItems, data];
       setMyItems(items);
     } catch (e) {
@@ -127,9 +128,10 @@ function MyItems() {
         {" "}
         {showAdd && <Add clickFunc={createItem} userId={userId} />}
       </div>
-      {show && (
-        <div>
+      {show &&
+        (myItems.length ? (
           <div className="dresses-container"> {mapItems()} </div>
+        ) : (
           <a
             className="message"
             href="/my-items"
@@ -137,8 +139,7 @@ function MyItems() {
           >
             Add your dress- Join the party <GiLargeDress />
           </a>
-        </div>
-      )}
+        ))}
     </div>
   );
 }

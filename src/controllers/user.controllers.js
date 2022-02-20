@@ -109,7 +109,7 @@ const addItems = async (req, res) => {
   const id = req.params.id;
   try {
     const user = await User.findOne({ id: id });
-    console.log(req.body);
+    console.log("what come", req.body);
     user.myItems.push(req.body);
     await user.save();
     res.status(201).send(user);
