@@ -8,19 +8,17 @@ function DressItem({ dress, deleteFunc, updateFunc }) {
   };
 
   return (
-    <div className="dress-item" style={{ width: "25%", height: "20%" }}>
-      <span>
-        <img
-          className="dress-pic"
-          src={dress.url}
-          alt="dress-pic"
-          style={{ width: "100%", height: "auto" }}
-        />
-        <h4>Size: {dress.size}</h4>
-        <h4>Color: {dress.color}</h4>
-        <h4>Price: {dress.price}</h4>
-        <h4>Location:{dress.location}</h4>
-      </span>
+    <div className="dress-item">
+      <img
+        className="dress-pic"
+        src={dress.url}
+        alt="dress-pic"
+        // style={{ height: "/0px", objectFit: "fill" }}
+      />
+      <h4>Size: {dress.size}</h4>
+      <h4>Color: {dress.color}</h4>
+      <h4>Price: {dress.price}</h4>
+      <h4>Location:{dress.location}</h4>
       <button onClick={() => deleteFunc(dress)} className="btn">
         Delete
       </button>

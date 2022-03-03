@@ -56,11 +56,11 @@ function MyItems() {
         phone: item.phone,
       };
       const { data } = await dressesApi.post("/dresses", newDress);
-      await dressesApi.put(`/users/itemadd/${userId}`, data._id);
+      await dressesApi.put(`/users/itemadd/${userId}`, data);
       const items = [...myItems, data];
       setMyItems(items);
     } catch (e) {
-      console.log(e.message);
+      console.table(e.message);
     }
   };
 
@@ -88,9 +88,10 @@ function MyItems() {
 
   const mapItems = () => {
     return myItems.map((dress) => {
-      console.log(myItems);
+      console.log(show);
       return (
-        <div className="dress-item" key={dress._id}>
+        //className="dress-item"
+        <div key={dress._id} style={{ height: "500px" }}>
           <DressItem
             dress={dress}
             deleteFunc={deleteDress}

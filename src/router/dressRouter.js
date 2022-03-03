@@ -1,6 +1,7 @@
 const express = require("express");
 const req = require("express/lib/request");
 const Dress = require("../model/dressModel");
+var bodyParser = require("body-parser");
 
 const dressRouter = express.Router();
 const {
@@ -14,7 +15,7 @@ const {
 
 dressRouter.get("/dresses", getAllDresses);
 dressRouter.get("/dresses/:id", getDress);
-dressRouter.post("/dresses", addDress);
+dressRouter.post("/dresses", bodyParser.json(), addDress);
 dressRouter.patch("/dresses/:id", updateDress);
 dressRouter.delete("/dresses/:id", deleteDress);
 dressRouter.get("/dresses/filter", getDressesFiltered);

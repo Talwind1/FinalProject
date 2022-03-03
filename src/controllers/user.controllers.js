@@ -77,7 +77,7 @@ const addToWishlist = async (req, res) => {
   const id = req.params.id;
   console.log("iddd", id);
   const dressId = req.body._id;
-  console.log("id dress is", dressId);
+  console.log("id dress is" , dressId);
   try {
     const user = await User.findOne({ id: id });
     console.log("hi wish", user);
@@ -107,10 +107,12 @@ const deleteFromWishlist = async (req, res) => {
 
 const addItems = async (req, res) => {
   const id = req.params.id;
+  // console.log("id", id);
   try {
     const user = await User.findOne({ id: id });
+    // console.log("user,", user);
     console.log("what come", req.body);
-    user.myItems.push(req.body);
+    user.myItems.push(req.body.dress._id);
     await user.save();
     res.status(201).send(user);
   } catch (e) {

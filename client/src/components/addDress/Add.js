@@ -9,6 +9,7 @@ function Add({ clickFunc, userId }) {
     price: "",
     usedId: userId,
     url: "",
+    Picture: "",
   });
 
   const [msg, setMsg] = useState(false);
@@ -62,6 +63,13 @@ function Add({ clickFunc, userId }) {
           <Input
             type="url"
             value={item.url}
+            handleChange={(e) => handleChange(e.target)}
+          />
+        </li>
+        <li>
+          <input
+            type="file"
+            value={item.picture}
             handleChange={(e) => handleChange(e.target)}
           />
         </li>

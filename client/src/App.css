@@ -32,7 +32,8 @@
   text-align: center;
   position: relative;
   background-color: #f3f1f5;
-  height: 100vh;
+  height: fit-content;
+  min-height: 100vh;
 }
 
 @media screen and (max-width: 1024px) {
@@ -260,7 +261,7 @@
   height: 100%;
 }
 .dress-item img {
-  height: 100%;
+  height: calc(100% - 12rem);
 }
 .update-Element {
   position: absolute;
@@ -283,7 +284,7 @@
 
 .my-items {
   background-color: #f3f1f5;
-  height: 100vh;
+  /* height: 100%; */
 }
 
 .dress-page {
